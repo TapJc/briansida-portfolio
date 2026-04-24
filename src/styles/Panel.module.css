@@ -1,0 +1,27 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+
+  width: 40%;
+  height: 60%;
+  background-color: white;
+  border: 1.5px solid black;
+  border-radius: 4px;
+}
+
+.titleBar {
+  height: 30px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}

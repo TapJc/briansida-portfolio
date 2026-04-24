@@ -1,4 +1,5 @@
-import AppWindow from './components/window';
+import Panel from './components/Panel';
+import styles from './styles/App.module.css';
 import { useState } from 'react';
 
 function App() {
@@ -13,33 +14,34 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Hello World</h1>
-      <nav>
-        <button onClick={() => toggleWindow("projects")}>Projects</button>
-        <button onClick={() => toggleWindow("about")}>About</button>
-        <button onClick={() => toggleWindow("contact")}>Contact</button>
-      </nav>
+    <div className={styles.desktop}>
+      <div>
+        <h1>Hello World</h1>
+        <nav>
+          <button onClick={() => toggleWindow("projects")}>Projects</button>
+          <button onClick={() => toggleWindow("about")}>About</button>
+          <button onClick={() => toggleWindow("contact")}>Contact</button>
+        </nav>
 
-      {/* Conditionally render each window if its name is in openWindow */}
-      {openWindow.includes("projects") && 
-        <AppWindow title="Projects" onClose={() => toggleWindow("projects")}>
-          <p>Projects Content Here</p>
-        </AppWindow>
-      }
+        {/* Conditionally render each window if its name is in openWindow */}
+        {openWindow.includes("projects") && 
+          <Panel title="Projects" onClose={() => toggleWindow("projects")}>
+            <p>Projects Content Here</p>
+          </Panel>
+        }
 
-      {openWindow.includes("about") && 
-        <AppWindow title="About" onClose={() => toggleWindow("about")}>
-          <p>About Content Here</p>
-        </AppWindow>
-      }
+        {openWindow.includes("about") && 
+          <Panel title="About" onClose={() => toggleWindow("about")}>
+            <p>About Content Here</p>
+          </Panel>
+        }
 
-      {openWindow.includes("contact") && 
-        <AppWindow title="Contact" onClose={() => toggleWindow("contact")}>
-          <p>Contact Content Here</p>
-        </AppWindow>
-      }
-      
+        {openWindow.includes("contact") && 
+          <Panel title="Contact" onClose={() => toggleWindow("contact")}>
+            <p>Contact Content Here</p>
+          </Panel>
+        }
+      </div>
     </div>
   )
 }
