@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Panel.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface PanelProps {
   title: string;
@@ -15,6 +15,9 @@ function Panel({title, onClose, children}: PanelProps) {
   const [offset, setOffset] = useState( {x: 0, y: 0} );
   const [isDragging, setIsDragging] = useState(false);
 
+  // Reference to the title bar element to measure its dimensions for drag boundary calculations
+  const titleBarRef = useRef<HTMLDivElement>(null);
+
   // Initiates dragging and calculates the cursor's offset from the panel's top-left corner
   const handleMouseDown = (event : React.MouseEvent) => {
     setIsDragging(true);
@@ -28,7 +31,15 @@ function Panel({title, onClose, children}: PanelProps) {
     if (isDragging) {
       // Updates panel position based on cursor movement minus the initial offset
       document.addEventListener('mousemove', event => {
-        setPosition( {x: event.clientX - offset.x, y: event.clientY - offset.y} );
+        // Max position before panel goes off screen
+        const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0);
+        const maxY = window.innerHeight - (titleBarRef.current?.offsetHeight || 0);
+
+        // Clamp new position between 0 and max bounds
+        const currX = Math.max(0, Math.min(event.clientX - offset.x, maxX));
+        const currY = Math.max(0, Math.min(event.clientY - offset.y, maxY));
+
+        setPosition( {x: currX, y: currY} );
       }, {signal: controller.signal});
 
       document.addEventListener('mouseup', () => {
@@ -42,9 +53,32 @@ function Panel({title, onClose, children}: PanelProps) {
     }
   }, [isDragging, offset]);
 
+  // Clamps panel position to viewport bounds when the browser is resized
+  useEffect(() => {
+    const controller = new AbortController();
+
+    window.addEventListener('resize', () => {
+      // Calculate the maximum allowed position based on the new viewport size
+      const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0);
+      const maxY = window.innerHeight - (titleBarRef.current?.offsetHeight || 0);
+
+      // Push panel back in bounds if it now exceeds the new viewport dimensions
+      setPosition( prev => ({
+        x: Math.min(prev.x, maxX),
+        y: Math.min(prev.y, maxY)
+      }));
+
+      }, {signal: controller.signal});
+
+      // Runs when panel closes and disappears from the DOM
+      return () => {
+        controller.abort();
+      }
+    }, []);
+
     return (
       <div style={ {top:`${position.y}px`, left:`${position.x}px`} } className={styles.panel}>
-        <div className={styles.titleBar} onMouseDown={handleMouseDown}>
+        <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <h1>{title}</h1>
           <button onClick={onClose}>Close</button>
         </div>
