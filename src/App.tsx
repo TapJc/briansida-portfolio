@@ -37,7 +37,7 @@ function App() {
 
         {/* Conditionally render each window if its name is in openWindow */}
         {openWindow.includes("projects") && 
-          <Panel title="Projects" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={() => toggleWindow("projects")}>
+          <Panel title="Projects" maxWidth="860px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={() => toggleWindow("projects")}>
             <p>Projects Content Here</p>
           </Panel>
         }
@@ -49,7 +49,7 @@ function App() {
         }
 
         {openWindow.includes("contact") && 
-          <Panel title="Contact" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => toggleWindow("contact")}>
+          <Panel title="Contact" maxWidth="580px" maxHeight="600px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => toggleWindow("contact")}>
             <p>Contact Content Here</p>
           </Panel>
         }

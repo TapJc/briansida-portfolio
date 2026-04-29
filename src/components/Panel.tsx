@@ -4,13 +4,15 @@ import { useState, useEffect, useRef } from 'react';
 
 interface PanelProps {
   title: string;
+  maxWidth?: string;
+  maxHeight?: string;
   zIndex: number;
   onRaise: () => void;
   onClose: () => void;
   children: React.ReactNode;
 }
 
-function Panel({title, zIndex, onClose, onRaise, children}: PanelProps) {
+function Panel({title, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
   // Tracks the panel's current position on screen
   const [position, setPosition] = useState( {x: 0, y: 0} );
   // Tracks the distance between the cursor and the panel's top-left corner when dragging starts
@@ -82,7 +84,7 @@ function Panel({title, zIndex, onClose, onRaise, children}: PanelProps) {
     }, []);
 
     return (
-      <div style={ {top:`${position.y}px`, left:`${position.x}px`, zIndex:`${zIndex}`} } className={styles.panel} onMouseDown={onRaise}>
+      <div style={ {maxWidth: maxWidth, maxHeight: maxHeight, top:`${position.y}px`, left:`${position.x}px`, zIndex: zIndex} } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <h1>{title}</h1>
           <button onClick={onClose}>Close</button>
