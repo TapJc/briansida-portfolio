@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 
 interface PanelProps {
   title: string;
+  initialX: number;
+  initialY: number;
   maxWidth?: string;
   maxHeight?: string;
   zIndex: number;
@@ -12,9 +14,9 @@ interface PanelProps {
   children: React.ReactNode;
 }
 
-function Panel({title, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
+function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
   // Tracks the panel's current position on screen
-  const [position, setPosition] = useState( {x: 0, y: 0} );
+  const [position, setPosition] = useState( {x: initialX, y: initialY} );
   // Tracks the distance between the cursor and the panel's top-left corner when dragging starts
   const [offset, setOffset] = useState( {x: 0, y: 0} );
   const [isDragging, setIsDragging] = useState(false);

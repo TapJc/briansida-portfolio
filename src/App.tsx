@@ -3,14 +3,19 @@ import styles from './styles/App.module.css';
 import { useState } from 'react';
 
 function App() {
-  const [openWindow, setOpenWindow] = useState<string[]>([]);
+  const [openPane, setOpenPane] = useState<string[]>([]);
   // Keeps track of the zIndex of each window to manage stacking order
   const [zIndexRecord, setZIndexRecord] = useState<Record<string, number>>({projects: 0, about: 0, contact: 0});
+  const basePositionX = window.innerWidth * 0.25;
+  const basePositionY = window.innerHeight * 0.35;
   
   // Adds windowName if not open, removes it if already open
-  function toggleWindow(windowName: string) {
-    // Passes a function to setOpenWindow so React always uses the latest state
-    setOpenWindow(prev => prev.includes(windowName) 
+  function togglePane(windowName: string) {
+    // Sets the zIndex of the toggled Pane to be 2 above the current max
+    if (!openPane.includes(windowName)) raiseZIndex(windowName);
+
+    // Passes a function to setOpenPane so React always uses the latest state
+    setOpenPane(prev => prev.includes(windowName) 
       ? prev.filter(w => w !== windowName)  // remove if already open
       : [...prev, windowName]);             // add if not open
   }
@@ -27,33 +32,34 @@ function App() {
 
   return (
     <div className={styles.desktop}>
-      <div>
+      <div className={styles.homePanel}>
         <h1>Hello World</h1>
         <nav>
-          <button onClick={() => toggleWindow("projects")}>Projects</button>
-          <button onClick={() => toggleWindow("about")}>About</button>
-          <button onClick={() => toggleWindow("contact")}>Contact</button>
+          <button onClick={() => togglePane("projects")}>Projects</button>
+          <button onClick={() => togglePane("about")}>About</button>
+          <button onClick={() => togglePane("contact")}>Contact</button>
         </nav>
+      </div>
 
-        {/* Conditionally render each window if its name is in openWindow */}
-        {openWindow.includes("projects") && 
-          <Panel title="Projects" maxWidth="860px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={() => toggleWindow("projects")}>
+        {/* Conditionally render each window if its name is in openPane */}
+        {openPane.includes("projects") && 
+          <Panel title="Projects" initialX={(openPane.indexOf("projects") * 30) + basePositionX} initialY={(openPane.indexOf("projects") * 30) + basePositionY} maxWidth="860px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={() => togglePane("projects")}>
             <p>Projects Content Here</p>
           </Panel>
         }
 
-        {openWindow.includes("about") && 
-          <Panel title="About" zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => toggleWindow("about")}>
+        {openPane.includes("about") && 
+          <Panel title="About" initialX={(openPane.indexOf("about") * 30) + basePositionX} initialY={(openPane.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePane("about")}>
             <p>About Content Here</p>
           </Panel>
         }
 
-        {openWindow.includes("contact") && 
-          <Panel title="Contact" maxWidth="580px" maxHeight="600px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => toggleWindow("contact")}>
+        {openPane.includes("contact") && 
+          <Panel title="Contact" initialX={(openPane.indexOf("contact") * 30) + basePositionX} initialY={(openPane.indexOf("contact") * 30) + basePositionY} maxWidth="580px" maxHeight="600px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePane("contact")}>
             <p>Contact Content Here</p>
           </Panel>
         }
-      </div>
+
     </div>
   )
 }
