@@ -88,7 +88,7 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
     return (
       <div style={ {maxWidth: maxWidth, maxHeight: maxHeight, top:`${position.y}px`, left:`${position.x}px`, zIndex: zIndex} } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
-          <h1>{title}</h1>
+          <span>{title}</span>
           <button onClick={onClose}>Close</button>
         </div>
         <div className={styles.content}>{children}</div>

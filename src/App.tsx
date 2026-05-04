@@ -32,30 +32,45 @@ function App() {
 
   return (
     <div className={styles.desktop}>
-      <div className={styles.homePanel}>
-        <h1>Hello World</h1>
-        <nav>
-          <button onClick={() => togglePane("projects")}>Projects</button>
-          <button onClick={() => togglePane("about")}>About</button>
-          <button onClick={() => togglePane("contact")}>Contact</button>
-        </nav>
+
+      <div className={styles.intro}>
+
+        <div className={styles.introTitleBar}>
+          <span>Home</span>
+        </div>
+
+        <div className={styles.introContent}>
+
+          <div className={styles.nameGroup}>
+            <span className={styles.name}>Hello, <span style={{color: "var(--color-accent)", fontWeight: "bold"}}>I'm Brian</span></span>
+            <p className={styles.tagline}>fullstack developer <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>·</span> cs graduate <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>·</span> introvert</p>
+          </div>
+
+          <nav className={styles.nav}>
+            <button onClick={() => togglePane("projects")}>Projects</button>
+            <button onClick={() => togglePane("about")}>About</button>
+            <button onClick={() => togglePane("contact")}>Contact</button>
+          </nav>
+
+        </div>
+
       </div>
 
         {/* Conditionally render each window if its name is in openPane */}
         {openPane.includes("projects") && 
-          <Panel title="Projects" initialX={(openPane.indexOf("projects") * 30) + basePositionX} initialY={(openPane.indexOf("projects") * 30) + basePositionY} maxWidth="860px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={() => togglePane("projects")}>
+          <Panel title="Projects" initialX={(openPane.indexOf("projects") * 50) + basePositionX} initialY={(openPane.indexOf("projects") * 30) + basePositionY} maxWidth="860px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={() => togglePane("projects")}>
             <p>Projects Content Here</p>
           </Panel>
         }
 
         {openPane.includes("about") && 
-          <Panel title="About" initialX={(openPane.indexOf("about") * 30) + basePositionX} initialY={(openPane.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePane("about")}>
+          <Panel title="About" initialX={(openPane.indexOf("about") * 50) + basePositionX} initialY={(openPane.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePane("about")}>
             <p>About Content Here</p>
           </Panel>
         }
 
         {openPane.includes("contact") && 
-          <Panel title="Contact" initialX={(openPane.indexOf("contact") * 30) + basePositionX} initialY={(openPane.indexOf("contact") * 30) + basePositionY} maxWidth="580px" maxHeight="600px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePane("contact")}>
+          <Panel title="Contact" initialX={(openPane.indexOf("contact") * 50) + basePositionX} initialY={(openPane.indexOf("contact") * 30) + basePositionY} maxWidth="580px" maxHeight="600px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePane("contact")}>
             <p>Contact Content Here</p>
           </Panel>
         }

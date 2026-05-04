@@ -1,11 +1,11 @@
 /* Default theme variables — dark mode is the default */
 :root {
-  --color-background: #0f1117;  /* Main page background — deep dark navy */
+  --color-background: rgb(13, 18, 28);  /* Main page background — deep dark navy */
   --color-surface: #1a1d2e;     /* Panel and card backgrounds — slightly lighter than background */
   --color-text: #e8e6df;        /* Primary text — warm off-white, easy on the eyes */
   --color-text-muted: #8a8780;  /* Secondary text — dimmer for less important info */
   --color-accent: #e8a87c;      /* Accent color — warm amber for highlights and buttons */
-  --color-border: #2a2d3e;      /* Subtle borders between elements */
+  --color-border: #3f4253;      /* Subtle borders between elements */
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Mono", monospace;
 }
@@ -20,13 +20,16 @@
   --color-border: #d4d4cc;      /* Subtle warm gray borders */
 }
 
-h1, h2, h3, p, body {
-  margin: 0;
-  padding: 0;
+* {
+  margin: 0;                /* Remove default browser margins from all elements */
+  padding: 0;               /* Remove default browser padding from all elements */
+  box-sizing: border-box;   /* Include padding and border in element's total width and height */
 }
 
-body, p {
+body {
   font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 h1, h2, h3 {
