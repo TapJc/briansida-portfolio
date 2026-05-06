@@ -1,0 +1,31 @@
+/* Reset default button styles, apply flex column layout and hover scale */
+.navButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: transform 0.2s ease;
+}
+
+.navButton:hover{
+  transform: scale(1.1);
+}
+
+.navIcon {
+  display: flex;
+  font-size: 3.5rem;
+  color: var(--color-text);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: bold;
+
+  color: var(--color-text)
+}
