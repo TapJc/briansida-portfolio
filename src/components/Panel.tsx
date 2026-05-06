@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from '../styles/Panel.module.css';
-import { useState, useEffect, useRef } from 'react';
+import React from "react";
+import styles from "../styles/Panel.module.css";
+import CloseButton from "./CloseButton"
+import { useState, useEffect, useRef } from "react";
 
 interface PanelProps {
   title: string;
@@ -89,11 +90,11 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
       <div style={ {maxWidth: maxWidth, maxHeight: maxHeight, top:`${position.y}px`, left:`${position.x}px`, zIndex: zIndex} } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <span>{title}</span>
-          <button onClick={onClose}>Close</button>
+          <CloseButton onClick={onClose} title="x"/>
         </div>
         <div className={styles.content}>{children}</div>
       </div>
-      )
+    );
   }
 
 export default Panel;
