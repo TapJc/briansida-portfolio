@@ -1,4 +1,5 @@
 import React from "react";
+import { PANEL_BORDER_OFFSET, NAVBAR_HEIGHT } from "../constants";
 import styles from "../styles/Panel.module.css";
 import CloseButton from "./CloseButton"
 import { useState, useEffect, useRef } from "react";
@@ -42,12 +43,12 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
       // Updates panel position based on cursor movement minus the initial offset
       document.addEventListener('mousemove', event => {
         // Max position before panel goes off screen
-        const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0);
+        const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0) - PANEL_BORDER_OFFSET;
         const maxY = window.innerHeight - (titleBarRef.current?.offsetHeight || 0);
 
         // Clamp new position between 0 and max bounds
         const currX = Math.max(0, Math.min(event.clientX - offset.x, maxX));
-        const currY = Math.max(0, Math.min(event.clientY - offset.y, maxY));
+        const currY = Math.max(NAVBAR_HEIGHT, Math.min(event.clientY - offset.y, maxY));
 
         setPosition( {x: currX, y: currY} );
       }, {signal: controller.signal});
@@ -69,13 +70,13 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
 
     window.addEventListener('resize', () => {
       // Calculate the maximum allowed position based on the new viewport size
-      const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0);
+      const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0) - PANEL_BORDER_OFFSET;
       const maxY = window.innerHeight - (titleBarRef.current?.offsetHeight || 0);
 
       // Push panel back in bounds if it now exceeds the new viewport dimensions
       setPosition( prev => ({
         x: Math.min(prev.x, maxX),
-        y: Math.min(prev.y, maxY)
+        y: Math.max(NAVBAR_HEIGHT, Math.min(prev.y, maxY))
       }));
 
       }, {signal: controller.signal});
