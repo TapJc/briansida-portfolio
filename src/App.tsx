@@ -1,15 +1,36 @@
 import Panel from "./components/Panel";
-import NavButton from "./components/NavButton"
+import NavBar from "./components/NavBar";
+import NavButton from "./components/NavButton";
+import Intro from "./components/Intro";
 import styles from "./styles/App.module.css";
-import { useState } from "react";
-import { BsPersonExclamation, BsEnvelopeAt, BsFolder2} from "react-icons/bs";
+import { useState, useEffect } from "react";
+import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
 
 function App() {
   const [openPanel, setOpenPanel] = useState<string[]>([]);
   // Keeps track of the zIndex of each window to manage stacking order
   const [zIndexRecord, setZIndexRecord] = useState<Record<string, number>>({work: 0, about: 0, contact: 0});
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const stored = localStorage.getItem("isDarkMode");
+    return stored ? stored === "true" : true; // If stored exists parse it, otherwise default to true (dark mode)
+  });
+  
   const basePositionX = window.innerWidth * 0.25;
   const basePositionY = window.innerHeight * 0.35;
+
+  function toggleTheme() {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem("isDarkMode", JSON.stringify(newMode));
+    
+    // Toggle the 'light' class on the <html> element to switch between dark and light theme
+    document.documentElement.classList.toggle("light");
+  }
+  
+  // Run once on page load to apply the stored theme
+  useEffect(() => {
+    if (!isDarkMode) document.documentElement.classList.add("light");
+  }, []);
   
   // Adds windowName if not open, removes it if already open
   function togglePanel(windowName: string) {
@@ -35,30 +56,15 @@ function App() {
   return (
     <div className={styles.desktop}>
 
-      <div className={styles.intro}>
+      <NavBar themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
+      
+      <Intro title="Home" name="Brian" tags={["fullstack developer", "cs graduate", "introvert"]}>
+        <NavButton onClick={() => togglePanel("about")} icon={<BsPersonExclamation/>} title="About"/>
+        <NavButton onClick={() => togglePanel("work")} icon={<BsFolder2/>} title="Work"/>
+        <NavButton onClick={() => togglePanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
+      </Intro>
 
-        <div className={styles.introTitleBar}>
-          <span>Home</span>
-        </div>
-
-        <div className={styles.introContent}>
-
-          <div className={styles.nameGroup}>
-            <span className={styles.name}>Hello, <span style={{color: "var(--color-accent)", fontWeight: "bold"}}>I'm Brian</span></span>
-            <p className={styles.tagline}>fullstack developer <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>·</span> cs graduate <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>·</span> introvert</p>
-          </div>
-
-          <nav className={styles.nav}>
-            <NavButton onClick={() => togglePanel("about")} icon={<BsPersonExclamation/>} title="About"/>
-            <NavButton onClick={() => togglePanel("work")} icon={<BsFolder2/>} title="Work"/>
-            <NavButton onClick={() => togglePanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
-          </nav>
-
-        </div>
-
-      </div>
-
-        {/* Conditionally render each window if its name is in openPanel */}
+        {/* Conditionally render each panel if its name is in openPanel */}
         {openPanel.includes("work") && 
           <Panel title="Projects" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="860px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
             <p>Work Content Here</p>
@@ -78,7 +84,7 @@ function App() {
         }
 
     </div>
-  )
+  );
 }
 
 export default App
