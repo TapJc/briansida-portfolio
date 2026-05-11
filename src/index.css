@@ -5,19 +5,19 @@
   --color-text: #e8e6df;        /* Primary text — warm off-white, easy on the eyes */
   --color-text-muted: #8a8780;  /* Secondary text — dimmer for less important info */
   --color-accent: #e8a87c;      /* Accent color — warm amber for highlights and buttons */
-  --color-border: #868996;      /* Subtle borders between elements */
+  --color-border: #c0c4d4;      /* Subtle borders between elements */
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Mono", monospace;
 }
 
 /* Light mode overrides — applied when .light class is added to <html> element */
 :root.light {
-  --color-background: #f5f5f0;  /* Warm off-white background */
-  --color-surface: #eaeae4;     /* Slightly darker warm gray for panels */
-  --color-text: #1a1d2e;        /* Dark navy text — mirrors dark mode background */
-  --color-text-muted: #6b6b68;  /* Muted warm gray for secondary text */
-  --color-accent: #c4713a;      /* Deeper amber for sufficient contrast on light background */
-  --color-border: #d4d4cc;      /* Subtle warm gray borders */
+  --color-background: #ece3d4;  /* Warm off-white background */
+  --color-surface: #d4c9ae;     /* Slightly darker warm gray for panels */
+  --color-text: #2d2517;        /* Darker brown text — provides good contrast on light background */
+  --color-text-muted: #6b5f4e;  /* Muted warm brown for secondary text */
+  --color-accent: #ca7237;      /* Deeper amber for sufficient contrast on light background */
+  --color-border: #58534b;      /* Subtle warm gray borders */
 }
 
 * {
