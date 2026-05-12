@@ -2,6 +2,7 @@ import Panel from "./components/Panel";
 import NavBar from "./components/NavBar";
 import NavButton from "./components/NavButton";
 import Intro from "./components/Intro";
+import About from "./components/About";
 import styles from "./styles/App.module.css";
 import { useState, useEffect } from "react";
 import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
@@ -58,7 +59,7 @@ function App() {
 
       <NavBar themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
       
-      <Intro title="Home" name="Brian" tags={["fullstack developer", "cs graduate", "introvert"]}>
+      <Intro title="Home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
         <NavButton onClick={() => togglePanel("about")} icon={<BsPersonExclamation/>} title="About"/>
         <NavButton onClick={() => togglePanel("work")} icon={<BsFolder2/>} title="Work"/>
         <NavButton onClick={() => togglePanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
@@ -73,7 +74,7 @@ function App() {
 
         {openPanel.includes("about") && 
           <Panel title="About" initialX={(openPanel.indexOf("about") * 50) + basePositionX} initialY={(openPanel.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePanel("about")}>
-            <p>About Content Here</p>
+            <About/>
           </Panel>
         }
 

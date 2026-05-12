@@ -1,0 +1,49 @@
+.about {
+  display:flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+
+  padding: 35px 60px;
+  border-bottom: 0.5px solid var(--color-border);
+  gap: 45px;
+  height: 210px;
+}
+
+.profilePic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  height: 160px;
+  border-radius: 50%;
+}
+
+.profileBio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.name {
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 3rem;
+
+}
+
+.description {
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.details {
+  flex: 1;
+  overflow-y: auto;
+}
