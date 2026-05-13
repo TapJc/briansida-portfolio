@@ -10,7 +10,7 @@
   width: 90%;
   max-width: 780px;
   height: 70vh;
-  max-height: 460px;
+  max-height: 490px;
 
   background-color: var(--color-surface);
   border: 3px solid var(--color-border);
@@ -41,7 +41,7 @@
   font-family: var(--font-heading);
   font-size: 1.5rem;
 
-  height: 50px;
+  height: 60px;
   padding: 0 15px;
   background-color: var(--color-background);
 

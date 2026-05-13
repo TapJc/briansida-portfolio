@@ -6,7 +6,7 @@
   width: 90%;
   max-width: 780px;
   height: 70vh;
-  max-height: 460px;
+  max-height: 490px;
 
   user-select: none;
   background-color: var(--color-surface);
@@ -22,7 +22,7 @@
   font-family: var(--font-heading);
   font-size: 1.5rem;
 
-  height: 50px;
+  height: 60px;
   padding: 0 15px;
   background-color: var(--color-background);
 
@@ -35,4 +35,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  /* Allows flex item to shrink below its content height 
+    so scrolling/overflow works correctly */
+  min-height: 0;
 }
