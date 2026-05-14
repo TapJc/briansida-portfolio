@@ -12,6 +12,7 @@
   height: 70vh;
   max-height: 490px;
 
+  user-select: none;
   background-color: var(--color-surface);
   border: 3px solid var(--color-border);
   border-radius: 8px;

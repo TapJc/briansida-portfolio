@@ -1,7 +1,7 @@
 /* Default theme variables — dark mode is the default */
 :root {
-  --color-background: #0d121c;  /* Main page background — deep dark navy */
-  --color-surface: #1a1d2e;     /* Panel and card backgrounds — slightly lighter than background */
+  --color-background: #101521;  /* Main page background — deep dark navy */
+  --color-surface: #22263b;     /* Panel and card backgrounds — slightly lighter than background */
   --color-text: #e8e6df;        /* Primary text — warm off-white, easy on the eyes */
   --color-text-muted: #8a8780;  /* Secondary text — dimmer for less important info */
   --color-accent: #e8a87c;      /* Accent color — warm amber for highlights and buttons */
