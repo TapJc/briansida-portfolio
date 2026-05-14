@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import NavButton from "./components/NavButton";
 import Intro from "./components/Intro";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import styles from "./styles/App.module.css";
 import { useState, useEffect } from "react";
 import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
@@ -79,8 +80,8 @@ function App() {
         }
 
         {openPanel.includes("contact") && 
-          <Panel title="Contact" initialX={(openPanel.indexOf("contact") * 50) + basePositionX} initialY={(openPanel.indexOf("contact") * 30) + basePositionY} maxWidth="580px" maxHeight="600px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePanel("contact")}>
-            <p>Contact Content Here</p>
+          <Panel title="Contact" initialX={(openPanel.indexOf("contact") * 50) + basePositionX} initialY={(openPanel.indexOf("contact") * 30) + basePositionY} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePanel("contact")}>
+            <Contact/>
           </Panel>
         }
 

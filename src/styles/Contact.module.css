@@ -1,0 +1,42 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  font-size: 1.18rem;
+  padding: 20px 45px;
+  gap: 10px;
+
+  min-height: 0;
+  overflow: hidden;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1rem;
+}
+
+.mailImg {
+  max-height: 240px;
+}
+
+.mailBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 10px 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-accent);
+}
+
+.mailBtn:hover {
+  background-color: #ef9356;
+}
