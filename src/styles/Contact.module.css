@@ -12,31 +12,43 @@
   overflow: hidden;
 }
 
-.title {
+.contactTitle {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.description {
+.contactDescription {
   font-size: 1rem;
 }
 
-.mailImg {
+.emailHighlight {
+  color: var(--color-accent); 
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.emailHighlight:hover {
+  color: var(--color-accent-hover);
+}
+
+.contactImage {
   max-height: 240px;
 }
 
-.mailBtn {
-  background: none;
+.contactBtn {
+  background-color: var(--color-accent);
   border: none;
   cursor: pointer;
 
   padding: 10px 20px;
-  border: 2px solid var(--color-border);
   border-radius: 8px;
-  background-color: var(--color-accent);
+
+  color: var(--color-background);
+  font-weight: bold;
 }
 
-.mailBtn:hover {
-  background-color: #ef9356;
+.contactBtn:hover {
+  background-color: var(--color-accent-hover);
 }
