@@ -6,6 +6,20 @@ ul {
   padding-inline-start: 1.5rem;
 }
 
+.highlightText {
+  color: var(--color-accent); 
+  font-weight: bold;
+}
+
+.linkHighlight {
+  color: var(--color-accent); 
+  font-weight: bold;
+}
+
+.linkHighlight:hover {
+  color: var(--color-accent-hover);
+}
+
 .about {
   display:flex;
   flex-direction: column;
@@ -36,6 +50,12 @@ ul {
   width: 160px;
   object-fit: cover; /* ensures image fills circle without distortion */
   border-radius: 50%;
+
+  transition: transform 0.2s ease;
+}
+
+.profilePic:hover {
+  transform: scale(1.03);
 }
 
 .profileBio {
@@ -74,6 +94,11 @@ ul {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.detailBorder {
+  border-left: 3px solid var(--color-border);
+  margin-top: 8px;
 }
 
 .details::-webkit-scrollbar {

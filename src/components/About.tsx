@@ -1,11 +1,11 @@
 import styles from "../styles/About.module.css"
-import ProfilePic from "../Snoop.png";
+import profile from "../assets/images/profile.jpg";
 
 function About() {
   return (
     <div className={styles.about}>
       <div className={styles.profileHeader}>
-        <img className={styles.profilePic} src={ProfilePic} alt="profile"></img>
+        <img className={styles.profilePic} src={profile} alt="profile"></img>
         <div className={styles.profileBio}>
           <div className={styles.name}>
             <span>Brian Sida</span>
@@ -13,7 +13,7 @@ function About() {
           <div className={styles.description}>
             <span>CS graduate, full-stack developer</span>
             <br/>
-            <span>Problem solver building modern <a style={{color: "var(--color-accent)", fontWeight:"bold"}} href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">applications</a></span>
+            <span>Problem solver building modern <a className={styles.linkHighlight} href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">applications</a></span>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@ function About() {
         </div>
         <div>
           <span className={styles.detailTitle}>EDUCATION</span>
-          <div style={{borderLeft: "3px solid var(--color-border)", marginTop:"8px"}}>
+          <div className={styles.detailBorder}>
             <span style={{paddingLeft:"15px"}}>Bachelor of Science in Computer Science</span>
             <br/>
             <span style={{paddingLeft:"15px", color:"var(--color-text-muted)", fontSize:"0.9rem"}}>(Graduated Cum Laude 2024)</span>
@@ -45,8 +45,8 @@ function About() {
         </div>
         <div>
           <span className={styles.detailTitle}>LANGUAGE PROFICIENCY</span>
-          <div style={{borderLeft: "3px solid var(--color-border)", marginTop: "8px"}}>
-            <span style={{paddingLeft:"15px"}}>I have native fluency in <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>English</span> and can speak <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>Spanish</span></span>
+          <div className={styles.detailBorder}>
+            <span style={{paddingLeft:"15px"}}>I have native fluency in <span className={styles.highlightText}>English</span> and can speak <span className={styles.highlightText}>Spanish</span></span>
           </div>
         </div>
       </div>
