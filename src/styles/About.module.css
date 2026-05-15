@@ -86,7 +86,6 @@ ul {
   gap: 25px;
   padding: 20px 45px;
 
-  overflow-y: auto;
   overflow-y: scroll;
 }
 
