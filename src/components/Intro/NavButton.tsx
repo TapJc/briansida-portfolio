@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "../styles/NavButton.module.css"
+import styles from "./NavButton.module.css"
 
 // Props for a navigation button with an icon and text label
 interface NavButtonProps {

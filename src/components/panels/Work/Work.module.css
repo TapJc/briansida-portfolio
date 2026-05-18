@@ -1,0 +1,49 @@
+.work {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  padding: 40px;
+  font-size: 1rem;
+
+  min-height: 0;
+  overflow-y: scroll;
+}
+
+.emailHighlight {
+  cursor: pointer;
+
+  color: var(--color-accent);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.emailHighlight:hover {
+  color: var(--color-accent-hover);
+}
+
+.headline {
+  border-radius: 6px;
+  padding: 20px;
+
+  background-color: var(--color-surface-alt);
+}
+
+.pushDown {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #2980b9; /* Creates a "raised" look */
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.pushDown:hover {
+  transform: translateY(2px); /* Push down */
+  box-shadow: 0 2px 0 #2980b9; /* Smaller shadow */
+}

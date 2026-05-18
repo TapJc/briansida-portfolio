@@ -1,4 +1,4 @@
-import styles from "../styles/CloseButton.module.css"
+import styles from "./CloseButton.module.css"
 
 function CloseButton({onClick, title} : {onClick: () => void; title: string}) {
   return (

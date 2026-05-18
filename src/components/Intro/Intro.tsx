@@ -1,4 +1,5 @@
-import styles from "../styles/Intro.module.css";
+import styles from "./Intro.module.css";
+import React from "react";
 
 interface IntroProps {
   title: string;

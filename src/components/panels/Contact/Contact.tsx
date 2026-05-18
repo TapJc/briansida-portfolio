@@ -1,5 +1,5 @@
-import styles from "../styles/Contact.module.css";
-import mail from "../assets/images/mail.png";
+import styles from "./Contact.module.css";
+import mail from "../../../assets/images/mail.png";
 import { useState } from "react";
 
 function Contact() {

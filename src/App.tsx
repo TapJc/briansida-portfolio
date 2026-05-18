@@ -1,12 +1,19 @@
-import Panel from "./components/Panel";
-import NavBar from "./components/NavBar";
-import NavButton from "./components/NavButton";
-import Intro from "./components/Intro";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import styles from "./styles/App.module.css";
+import Panel from "./components/Panel/Panel";
+import NavBar from "./components/NavBar/NavBar";
+import NavButton from "./components/Intro/NavButton";
+
+import Intro from "./components/Intro/Intro";
+import About from "./components/panels/About/About";
+import Contact from "./components/panels/Contact/Contact";
+import Work from "./components/panels/Work/Work";
+
+import Project from "./components/panels/Work/Project";
+import {projects} from "./data/projects"
+
+import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
+
 
 function App() {
   const [openPanel, setOpenPanel] = useState<string[]>([]);
@@ -69,7 +76,13 @@ function App() {
         {/* Conditionally render each panel if its name is in openPanel */}
         {openPanel.includes("work") && 
           <Panel title="Projects" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="860px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
-            <p>Work Content Here</p>
+            <Work>
+              {
+                projects.map(project => (
+                  <Project key={project.title} title={project.title} description={project.description} img={project.img} link={project.link}/>
+                ))
+              }
+            </Work>
           </Panel>
         }
 

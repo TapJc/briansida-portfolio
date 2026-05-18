@@ -1,7 +1,7 @@
 import React from "react";
-import { PANEL_BORDER_OFFSET, NAVBAR_HEIGHT } from "../constants";
-import styles from "../styles/Panel.module.css";
-import CloseButton from "./CloseButton"
+import { PANEL_BORDER_OFFSET, NAVBAR_HEIGHT } from "../../constants";
+import styles from "./Panel.module.css";
+import CloseButton from "./CloseButton";
 import { useState, useEffect, useRef } from "react";
 
 interface PanelProps {
