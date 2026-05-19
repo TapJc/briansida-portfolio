@@ -8,7 +8,7 @@ import Contact from "./components/panels/Contact/Contact";
 import Work from "./components/panels/Work/Work";
 
 import Project from "./components/panels/Work/Project";
-import {projects} from "./data/projects"
+import {projects, technologies, languages} from "./data/projects"
 
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
@@ -76,7 +76,7 @@ function App() {
         {/* Conditionally render each panel if its name is in openPanel */}
         {openPanel.includes("work") && 
           <Panel title="Projects" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="860px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
-            <Work>
+            <Work technologies={technologies} languages={languages}>
               {
                 projects.map(project => (
                   <Project key={project.title} title={project.title} description={project.description} img={project.img} link={project.link}/>
