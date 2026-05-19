@@ -1,0 +1,20 @@
+.badge {
+  display: inline-block;
+
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background);
+
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin: 5px 2px;
+
+  font-size: 0.9rem;
+
+  box-shadow: 0 4px 0 #5a657c; /* Creates a "raised" look */
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.badge:hover {
+  transform: translateY(2px); /* Push down */
+  box-shadow: 0 2px 0 #5a657c; /* Smaller shadow */
+}
