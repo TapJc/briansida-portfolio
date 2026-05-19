@@ -2,12 +2,13 @@
 :root {
   --color-background: #101521;    /* Main page background — deep dark navy */
   --color-surface: #22263b;       /* Panel and card backgrounds — slightly lighter than background */
-  --color-surface-alt: #4d568e;
+  --color-surface-alt: #4d568e;   /* Description and information backgrounds - slightly lighter than surface  */
   --color-text: #e8e6df;          /* Primary text — warm off-white, easy on the eyes */
   --color-text-muted: #8a8780;    /* Secondary text — dimmer for less important info */
   --color-accent: #e8a87c;        /* Accent color — warm amber for highlights and buttons */
-  --color-accent-hover: #d4956a;  /* darker for dark mode hover */
+  --color-accent-hover: #d4956a;  /* Darker for dark mode hover */
   --color-border: #dddfe4;        /* Subtle borders between elements */
+  --color-scroll-hover: #c4c4c4;
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Mono", monospace;
 }
@@ -16,12 +17,13 @@
 :root.light {
   --color-background: #ece3d4;    /* Warm off-white background */
   --color-surface: #d4c9ae;       /* Slightly darker warm gray for panels */
-  --color-surface-alt: #a49c8e;
+  --color-surface-alt: #a49c8e;   /* Slightly darker warm brown for panels */
   --color-text: #2d2517;          /* Darker brown text — provides good contrast on light background */
   --color-text-muted: #6b5f4e;    /* Muted warm brown for secondary text */
   --color-accent: #ca7237;        /* Deeper amber for sufficient contrast on light background */
-  --color-accent-hover: #ef9356;  /* lighter for light mode hover */
+  --color-accent-hover: #ef9356;  /* Lighter for light mode hover */
   --color-border: #52504e;        /* Subtle warm gray borders */
+  --color-scroll-hover: #666666;
 }
 
 * {
