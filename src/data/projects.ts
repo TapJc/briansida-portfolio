@@ -1,20 +1,24 @@
+import ecommerceSite from "../assets/images/projects/amazon.png";
+import peoriaFresh from "../assets/images/projects/peoriaFresh.png";
+import healthScape from "../assets/images/projects/healthScape.png";
+
 // Static list of projects displayed in the Work panel
 export const projects = [
   {
-    title: "\"Amazon\"", 
-    img: "../assets/images/projects/amazon.png", 
+    title: "Ecommerce Site", 
+    img: ecommerceSite, 
     description: "a", 
     link: "https://github.com/TapJc/ecommerce-frontend"
   },
   {
     title: "PeoriaFresh", 
-    img: "../assets/images/projects/peoriaFresh.png", 
+    img: peoriaFresh, 
     description: "b", 
     link: "https://peoriafresh.org/"
   },
   {
     title: "HealthScape", 
-    img: "./assets/images/projects/healthScape.png", 
+    img: healthScape, 
     description: "c", 
     link: "https://kmann725.itch.io/healthscape"
   }

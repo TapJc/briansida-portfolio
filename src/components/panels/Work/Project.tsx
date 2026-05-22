@@ -1,6 +1,6 @@
 import styles from "./Project.module.css"
 
-interface ProjectProps {
+export interface ProjectProps {
   title: string;
   img: string;
   description: string;
@@ -10,9 +10,7 @@ interface ProjectProps {
 function Project({title, img, description, link}: ProjectProps) {
   return (
     <div className={styles.project}>
-      <div className={styles.thumbnail}>
-        <img src={img}></img>
-      </div>
+      <img className={styles.thumbnail} src={img}></img>
       <div className={styles.projectInfo}>
         <div className={styles.projectTitle}>
           <span>{title}</span>
@@ -20,8 +18,9 @@ function Project({title, img, description, link}: ProjectProps) {
         <div className={styles.projectDescription}>
           <p>{description}</p>
         </div>
-        <button className={styles.viewProject}></button>
+        <button className={styles.viewProject} onClick={() => window.location.href = link}>View Project</button>
       </div>
+      <div className={styles.divider}/>
     </div>
   );
 }

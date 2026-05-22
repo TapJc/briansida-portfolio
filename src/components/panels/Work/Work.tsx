@@ -1,14 +1,17 @@
 import styles from "./Work.module.css";
 import ToolBadge from "./ToolBadge";
-import React from "react";
+
+import Project from "./Project";
+// Tells TypeScript this import is only used for type checking and should be erased at runtime
+import type { ProjectProps } from "./Project";
 
 interface WorkProps {
   technologies: string[];
   languages: string[];
-  children: React.ReactNode;
+  projects: ProjectProps[];
 }
 
-function Work({technologies, languages, children}: WorkProps) {
+function Work({technologies, languages, projects}: WorkProps) {
   return (
     <div className={styles.work}>
       <div className={styles.headline}>
@@ -16,16 +19,16 @@ function Work({technologies, languages, children}: WorkProps) {
         <p>I do web design and web/app development.</p>
       </div>
       <div className={styles.skillsGrid}>
-        <div className={styles.tools}>
-          <h3 className={styles.titleHighlight}>TECHNOLOGIES</h3>
+        <div>
+          <h2 className={styles.titleHighlight}>TECHNOLOGIES</h2>
           {
             technologies.map(tech => (
               <ToolBadge key={tech}>{tech}</ToolBadge>
             ))
           } 
         </div>
-        <div className={styles.development}>
-          <h3 className={styles.titleHighlight}>LANGUAGES</h3>
+        <div>
+          <h2 className={styles.titleHighlight}>LANGUAGES</h2>
           {
             languages.map(language => (
               <ToolBadge key={language}>{language}</ToolBadge>
@@ -34,9 +37,16 @@ function Work({technologies, languages, children}: WorkProps) {
         </div>
       </div>
       <div className={styles.divider}/>
-      <div className={styles.projects}>
-        <span className={styles.titleHighlight}>DEVELOPMENT</span>
-        {children}
+      <div>
+        <h2 className={styles.titleHighlight}>DEVELOPMENT</h2>
+          {
+            projects.map(project =>
+              <div key={project.title}>
+                <Project {...project}/>
+                <div className={styles.divider}/>
+              </div>
+            )
+          }
       </div>
     </div>
   );

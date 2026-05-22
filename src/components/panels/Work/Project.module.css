@@ -1,0 +1,48 @@
+.project {
+  display: flex;
+  gap: 35px;
+
+  margin-bottom: 20px;
+}
+
+.thumbnail {
+  height: 200px;  
+  width: 260px;
+  border-radius: 8px;
+
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.03);
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.projectTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  color: var(--color-accent);
+}
+
+.viewProject {
+  background-color: var(--color-surface-alt);
+  border: none;
+  cursor: pointer;
+  
+  align-self: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.viewProject:hover {
+  background-color: var(--color-surface-alt-hover);
+}
