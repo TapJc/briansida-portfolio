@@ -16,9 +16,9 @@ function Project({title, img, description, link}: ProjectProps) {
           <span>{title}</span>
         </div>
         <div className={styles.projectDescription}>
-          <p>{description}</p>
+          {description}
         </div>
-        <button className={styles.viewProject} onClick={() => window.location.href = link}>View Project</button>
+        <button className={styles.projectButton} onClick={() => window.location.href = link}>View Project</button>
       </div>
       <div className={styles.divider}/>
     </div>

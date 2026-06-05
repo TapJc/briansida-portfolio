@@ -7,19 +7,32 @@ export const projects = [
   {
     title: "Ecommerce Site", 
     img: ecommerceSite, 
-    description: "a", 
+    description: 
+    `Developed a full-stack e-commerce web application inspired by Amazon, featuring a Java Spring Boot backend and a dynamic JavaScript frontend. 
+    I designed RESTful APIs for product and order management, implemented order creation and tracking functionality, and integrated 
+    an H2 database for data persistence. On the frontend, I built responsive pages with real-time cart updates, product search, 
+    and seamless state management to create a smooth and interactive shopping experience.`, 
     link: "https://github.com/TapJc/ecommerce-frontend"
   },
   {
     title: "PeoriaFresh", 
     img: peoriaFresh, 
-    description: "b", 
+    description: `
+    PeoriaFresh was a team-based web application focused on improving food accessibility in the Peoria community by connecting families,
+    food banks, pantries, and local farmers through an easy-to-use platform. I contributed to both the front-end and back-end development 
+    using React, TypeScript, Node.js, Express.js, and RESTful architecture, including designing, implementing, and debugging a secure sign-in 
+    authentication page with a responsive and accessible UI. Working in an agile team of five, I collaborated on feature development, testing, 
+    and continuous improvements to deliver a reliable user experience across devices.`, 
     link: "https://peoriafresh.org/"
   },
   {
     title: "HealthScape", 
     img: healthScape, 
-    description: "c", 
+    description: `
+    HealthScape was a Unity-based game project developed by a team of five, where I helped build core gameplay systems 
+    using C#. I implemented player controls, physics interactions, and collision detection to create a smooth and responsive experience. 
+    I also developed AI behaviors for NPCs, along with gameplay features like health, inventory, and quest systems. 
+    Throughout the project, I focused on testing and debugging to ensure stable performance and an engaging player experience.`, 
     link: "https://kmann725.itch.io/healthscape"
   }
 ];
