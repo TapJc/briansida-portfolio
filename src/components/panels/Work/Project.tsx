@@ -18,7 +18,7 @@ function Project({title, img, description, link}: ProjectProps) {
         <div className={styles.projectDescription}>
           {description}
         </div>
-        <button className={styles.projectButton} onClick={() => window.location.href = link}>View Project</button>
+        <a className={styles.projectButton} href={link} target="_blank" rel="noopener noreferrer">View Project</a>
       </div>
       <div className={styles.divider}/>
     </div>

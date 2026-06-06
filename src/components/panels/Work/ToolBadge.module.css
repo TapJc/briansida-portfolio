@@ -5,10 +5,10 @@
   background-color: var(--color-background);
 
   border-radius: 6px;
-  padding: 6px 12px;
+  padding: 6px 15px;
   margin: 5px 2px;
 
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   box-shadow: 0 4px 0 #5a657c; /* Creates a "raised" look */
   transition: transform 0.1s ease, box-shadow 0.1s ease;

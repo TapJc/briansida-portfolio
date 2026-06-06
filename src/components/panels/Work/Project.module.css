@@ -39,6 +39,7 @@
 
 .projectButton {
   background-color: var(--color-surface-alt);
+  text-decoration: none;
   border: none;
   cursor: pointer;
   
