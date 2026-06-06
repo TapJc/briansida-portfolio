@@ -91,6 +91,7 @@
 
 .contactBtn {
   background-color: var(--color-accent);
+  text-decoration: none;
   border: none;
   cursor: pointer;
 
@@ -98,6 +99,7 @@
   border-radius: 8px;
 
   color: var(--color-background);
+  font-size: 0.9rem;
   font-weight: bold;
 }
 

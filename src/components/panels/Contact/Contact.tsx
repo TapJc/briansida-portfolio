@@ -22,7 +22,7 @@ function Contact() {
       </p>
       <img className={styles.contactImage} src={mail} alt="mail"></img>
       <p className={styles.contactDescription}>or press the button below to open your mail app</p>
-      <button className={styles.contactBtn} onClick={() => {window.location.href = "mailto:brian209222@gmail.com"}}>Send Email</button>
+      <a className={styles.contactBtn} href="mailto:brian209222@gmail.com">Send Email</a>
     </div>
   );
 }
