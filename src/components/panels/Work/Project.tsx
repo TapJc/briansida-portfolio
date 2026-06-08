@@ -3,7 +3,7 @@ import styles from "./Project.module.css"
 export interface ProjectProps {
   title: string;
   img: string;
-  description: string;
+  description: string[];
   link: string;
 }
 
@@ -16,7 +16,11 @@ function Project({title, img, description, link}: ProjectProps) {
           <span>{title}</span>
         </div>
         <div className={styles.projectDescription}>
-          {description}
+          {description.map((sentence, index) => 
+            <div key={index}>
+              {sentence}
+            </div>
+          )}
         </div>
         <a className={styles.projectButton} href={link} target="_blank" rel="noopener noreferrer">View Project</a>
       </div>

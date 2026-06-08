@@ -74,7 +74,7 @@ function App() {
 
         {/* Conditionally render each panel if its name is in openPanel */}
         {openPanel.includes("work") && 
-          <Panel title="Projects" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
+          <Panel title="Work" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
             <Work technologies={technologies} languages={languages} projects={projects}/>
           </Panel>
         }
