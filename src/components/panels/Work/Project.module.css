@@ -29,12 +29,21 @@
   font-weight: bold;
 
   color: var(--color-accent);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .projectDescription {
-  text-align: justify;
+  text-align: left;
   margin-bottom: 20px;
+}
+
+.projectDescription p {
+  margin-bottom: 12px;
+}
+
+/* Removes that bottom margin on the final paragraph only */
+.projectDescription p:last-child {
+   margin-bottom: 0;
 }
 
 .projectButton {

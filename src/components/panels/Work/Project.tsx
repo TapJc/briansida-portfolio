@@ -17,9 +17,9 @@ function Project({title, img, description, link}: ProjectProps) {
         </div>
         <div className={styles.projectDescription}>
           {description.map((sentence, index) => 
-            <div key={index}>
+            <p key={index}>
               {sentence}
-            </div>
+            </p>
           )}
         </div>
         <a className={styles.projectButton} href={link} target="_blank" rel="noopener noreferrer">View Project</a>
