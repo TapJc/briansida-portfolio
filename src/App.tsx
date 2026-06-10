@@ -66,7 +66,7 @@ function App() {
 
       <NavBar themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
       
-      <Intro title="Home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
+      <Intro title="home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
         <NavButton onClick={() => togglePanel("about")} icon={<BsPersonExclamation/>} title="About"/>
         <NavButton onClick={() => togglePanel("work")} icon={<BsFolder2/>} title="Work"/>
         <NavButton onClick={() => togglePanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
@@ -74,19 +74,19 @@ function App() {
 
         {/* Conditionally render each panel if its name is in openPanel */}
         {openPanel.includes("work") && 
-          <Panel title="Work" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
+          <Panel title="work" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
             <Work technologies={technologies} languages={languages} projects={projects}/>
           </Panel>
         }
 
         {openPanel.includes("about") && 
-          <Panel title="About" initialX={(openPanel.indexOf("about") * 50) + basePositionX} initialY={(openPanel.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePanel("about")}>
+          <Panel title="about" initialX={(openPanel.indexOf("about") * 50) + basePositionX} initialY={(openPanel.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePanel("about")}>
             <About/>
           </Panel>
         }
 
         {openPanel.includes("contact") && 
-          <Panel title="Contact" initialX={(openPanel.indexOf("contact") * 50) + basePositionX} initialY={(openPanel.indexOf("contact") * 30) + basePositionY} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePanel("contact")}>
+          <Panel title="contact" initialX={(openPanel.indexOf("contact") * 50) + basePositionX} initialY={(openPanel.indexOf("contact") * 30) + basePositionY} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePanel("contact")}>
             <Contact/>
           </Panel>
         }
