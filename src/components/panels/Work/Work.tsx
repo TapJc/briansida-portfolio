@@ -16,7 +16,7 @@ function Work({technologies, languages, projects}: WorkProps) {
     <div className={styles.work}>
       <div className={styles.headline}>
         <p style={{fontWeight:"bold"}}>Accepting work offers via my <a className={styles.emailHighlight} href="mailto:brian209222@gmail.com">work email!</a></p>
-        <p>I do web design and web/app development.</p>
+        <p>I build software and web-based solutions from concept to deployment, combining intuitive user experiences with scalable and reliable systems.</p>
       </div>
       <div className={styles.skillsGrid}>
         <div>
@@ -40,10 +40,12 @@ function Work({technologies, languages, projects}: WorkProps) {
       <div>
         <h2 className={styles.titleHighlight}>DEVELOPMENT</h2>
           {
-            projects.map(project =>
+            projects.map((project, index) =>
               <div key={project.title}>
                 <Project {...project}/>
                 <div className={styles.divider}/>
+
+                {projects.length - 1 === index ? <p className={styles.footerNote}>See more on <a href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">Github</a></p> : null}
               </div>
             )
           }

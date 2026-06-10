@@ -24,6 +24,16 @@
   font-size: 1.6rem;
 }
 
+.footerNote {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.footerNote a {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
 .divider {
   border-top: 1px solid gray;
 }
@@ -35,6 +45,8 @@
 .headline {
   border-radius: 6px;
   padding: 20px;
+
+  font-size: 0.9rem;
 
   background-color: var(--color-surface-alt);
 }
