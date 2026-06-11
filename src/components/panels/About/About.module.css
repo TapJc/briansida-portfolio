@@ -89,6 +89,19 @@ ul {
   overflow-y: scroll;
 }
 
+.paragraphSpacing {
+  margin-bottom: 10px;
+}
+
+.mutedText {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.sectionSpacing {
+  margin-top: 8px;
+}
+
 .detailTitle {
   font-family: var(--font-heading);
   font-size: 1.5rem;
@@ -98,6 +111,7 @@ ul {
 .detailBorder {
   border-left: 3px solid var(--color-border);
   margin-top: 8px;
+  padding-left: 15px;
 }
 
 .details::-webkit-scrollbar {

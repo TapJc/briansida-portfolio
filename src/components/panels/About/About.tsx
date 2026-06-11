@@ -11,34 +11,32 @@ function About() {
             <span>Brian Sida</span>
           </div>
           <div className={styles.description}>
-            <span>CS graduate, full-stack developer</span>
-            <br/>
-            <span>Problem solver building modern <a className={styles.linkHighlight} href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">applications</a></span>
+            <p>Computer Science graduate & full-stack developer</p>
+            <p>Building modern, user-focused web <a className={styles.linkHighlight} href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">applications</a></p>
           </div>
         </div>
       </div>
       <div className={styles.details}>
         <div>
-          <p style={{marginBottom: "15px"}}>Hi, I'm Brian, a CS graduate and devoloper. I've...</p>
+          <p className={styles.paragraphSpacing}>Hi, I'm Brian, a CS graduate and developer. I've...</p>
           <ul>
-            <li>collaborated with developers and UX designers to create user-focused sites</li>
-            <li>developed responsive UIs and RESTful APIs in Agile team environments</li>
-            <li>created projects ranging from e-commerce platforms to interactive games</li>
+            <li>collaborated with developers and UX designers to build accessible, user-focused web applications</li>
+            <li>developed responsive front-end interfaces and RESTful APIs in Agile team environments</li>
+            <li>built projects ranging from full-stack e-commerce platforms to interactive Unity games</li>
           </ul>
         </div>
         <div>
           <span className={styles.detailTitle}>EDUCATION</span>
           <div className={styles.detailBorder}>
-            <span style={{paddingLeft:"15px"}}>Bachelor of Science in Computer Science</span>
-            <br/>
-            <span style={{paddingLeft:"15px", color:"var(--color-text-muted)", fontSize:"0.9rem"}}>(Graduated Cum Laude 2024)</span>
+            <p>Bachelor of Science in Computer Science with a Minor in Cybersecurity</p>
+            <span className={styles.mutedText}>(Graduated Magna Cum Laude 2024)</span>
           </div>
         </div>
         <div>
           <span className={styles.detailTitle}>INTERESTS</span>
-          <ul style={{marginTop:"13px"}}>
-            <li>role playing games</li>
-            <li>psychological movies/shows</li>
+          <ul className={styles.sectionSpacing}>
+            <li>role-playing and single-player games</li>
+            <li>thriller movies and shows</li>
             <li>reading comics and novels</li>
             <li>hiking or riding my bike</li>
           </ul>
@@ -46,7 +44,7 @@ function About() {
         <div>
           <span className={styles.detailTitle}>LANGUAGE PROFICIENCY</span>
           <div className={styles.detailBorder}>
-            <span style={{paddingLeft:"15px"}}>I have native fluency in <span className={styles.highlightText}>English</span> and can speak <span className={styles.highlightText}>Spanish</span></span>
+            <p>I have native fluency in <span className={styles.highlightText}>English</span> and can speak <span className={styles.highlightText}>Spanish</span></p>
           </div>
         </div>
       </div>
