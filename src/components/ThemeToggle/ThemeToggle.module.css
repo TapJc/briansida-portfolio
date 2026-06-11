@@ -1,22 +1,13 @@
-.navBar {
-  display: flex;
-  align-items: center;
-  position: fixed;
-
-  width: 100%;
-  height: 50px;
-
-  padding: 0 25px;
-  background-color: var(--color-surface);
-}
-
 .themeButton {
+  position: absolute;
+  left: 25px;
+  top: 15px;
+
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
 
-  display: flex;
   font-size: 2rem;
   color: var(--color-text);
 

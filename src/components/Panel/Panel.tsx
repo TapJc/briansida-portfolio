@@ -1,5 +1,4 @@
 import React from "react";
-import { PANEL_BORDER_OFFSET, NAVBAR_HEIGHT } from "../../constants";
 import styles from "./Panel.module.css";
 import CloseButton from "./CloseButton";
 import { useState, useEffect, useRef } from "react";
@@ -26,6 +25,8 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
   // Reference to the title bar element to measure its dimensions for drag boundary calculations
   const titleBarRef = useRef<HTMLDivElement>(null);
 
+  const PANEL_BORDER_OFFSET = 6; // 3px border on each side
+
   // Initiates dragging and calculates the cursor's offset from the panel's top-left corner
   const handleMouseDown = (event : React.MouseEvent) => {
     // Prevent text selection while dragging
@@ -48,7 +49,7 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
 
         // Clamp new position between 0 and max bounds
         const currX = Math.max(0, Math.min(event.clientX - offset.x, maxX));
-        const currY = Math.max(NAVBAR_HEIGHT, Math.min(event.clientY - offset.y, maxY));
+        const currY = Math.max(0, Math.min(event.clientY - offset.y, maxY));
 
         setPosition( {x: currX, y: currY} );
       }, {signal: controller.signal});
@@ -76,7 +77,7 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
       // Push panel back in bounds if it now exceeds the new viewport dimensions
       setPosition( prev => ({
         x: Math.min(prev.x, maxX),
-        y: Math.max(NAVBAR_HEIGHT, Math.min(prev.y, maxY))
+        y: Math.min(prev.y, maxY),
       }));
 
       }, {signal: controller.signal});

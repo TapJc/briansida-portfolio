@@ -1,5 +1,5 @@
 import Panel from "./components/Panel/Panel";
-import NavBar from "./components/NavBar/NavBar";
+import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
 import NavButton from "./components/Intro/NavButton";
 
 import Intro from "./components/Intro/Intro";
@@ -64,7 +64,7 @@ function App() {
   return (
     <div className={styles.desktop}>
 
-      <NavBar themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
+      <ThemeToggle themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
       
       <Intro title="home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
         <NavButton onClick={() => togglePanel("about")} icon={<BsPersonExclamation/>} title="About"/>
