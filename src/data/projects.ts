@@ -1,10 +1,21 @@
+import portfolio from "../assets/images/projects/portfolio.png";
 import ecommerceSite from "../assets/images/projects/ecommerce.png";
 import peoriaFresh from "../assets/images/projects/peoriaFresh.png";
 import healthScape from "../assets/images/projects/healthScape.png";
-import portfolio from "../assets/images/projects/portfolio.png";
+import timeToDie from "../assets/images/projects/timeToDie.png";
 
 // Static list of projects displayed in the Work panel
 export const projects = [
+    {
+    title: "Brian's Portfolio",
+    img: portfolio,
+    description: [
+    `A single-page personal portfolio built with React and TypeScript, featuring a windowed desktop interface with draggable, 
+    stackable panels. Includes a light/dark theme toggle with localStorage persistence, dynamic z-index management, 
+    and responsive boundary clamping to keep panels within the viewport.`
+    ],
+    link: "https://github.com/TapJc/briansida-portfolio"
+  },
   {
     title: "Ecommerce Site", 
     img: ecommerceSite, 
@@ -38,31 +49,37 @@ export const projects = [
     title: "HealthScape", 
     img: healthScape, 
     description: [
-    `HealthScape was a Unity-based game project developed by a team of five, where I helped build core gameplay systems 
-    using C#. I implemented player controls, physics interactions, and collision detection to create a smooth and responsive experience. 
-    I also developed AI behaviors for NPCs, along with gameplay features like health, inventory, and quest systems. 
-    Throughout the project, I focused on testing and debugging to ensure stable performance and an engaging player experience.`
+    `Developed HealthScape, a Unity-based bullet hell game where players battle their unhealthy habits while 
+    navigating a challenging five-floor labyrinth. Working within a team of five, I contributed through weekly 
+    planning sessions to define goals, coordinate development efforts, and ensure project milestones were met.`,
+    `Using C# and the Unity Engine, I developed and debugged ranged and stationary enemy AI, implemented projectile 
+    mechanics, and created the tutorial UI that guided players through the game's objectives and core systems. 
+    `
     ],
     link: "https://kmann725.itch.io/healthscape"
   },
   {
-    title: "Brian's Portfolio",
-    img: portfolio,
+    title: "Time to Die",
+    img: timeToDie,
     description: [
-    `A single-page personal portfolio built with React and TypeScript, featuring a windowed desktop interface with draggable, 
-    stackable panels. Includes a light/dark theme toggle with localStorage persistence, dynamic z-index management, 
-    and responsive boundary clamping to keep panels within the viewport.`
+      `Developed Time to Die, a Unity prototype where players take on the role of Death and collect souls 
+      through dice-based combat encounters. As part of a five-person team, I collaborated in weekly planning 
+      sessions to define development goals and coordinate responsibilities.`,
+      `Using C# and the Unity Engine, I developed and debugged the player movement system and third-person 
+      camera controls. I also designed and implemented the overworld and battle tutorial UIs to introduce players 
+      to game objectives, movement, and combat mechanics, helping create an intuitive experience.
+      `
     ],
-    link: "https://github.com/TapJc/briansida-portfolio"
+    link: "https://jackson-l.itch.io/time-to-die"
   }
 ];
 
 // Static list of frameworks & technologies displayed in the experience section in Work panel
 export const technologies = [
-  "React", "Node.js", "Express.js", "Spring Boot", "Spring Framework", "HTML", "CSS", "Bootstrap", "Git/GitHub"
+  "React", "Node.js", "Express.js", "Spring Boot", "Spring Framework", "REST APIs", "H2 Database" ,"HTML", "CSS", "Git/GitHub"
 ];
 
 // Static list of languages displayed in the experience section in Work panel
 export const languages = [
-  "Java", "Python3", "C++", "C#", "JavaScript", "TypeScript", "SQL"
+  "Java", "Python", "C++", "C#", "JavaScript", "TypeScript", "SQL"
 ];

@@ -15,7 +15,7 @@ function Work({technologies, languages, projects}: WorkProps) {
   return (
     <div className={styles.work}>
       <div className={styles.headline}>
-        <p style={{fontWeight:"bold"}}>Accepting work offers via my <a className={styles.emailHighlight} href="mailto:brian209222@gmail.com">work email!</a></p>
+        <p style={{fontWeight:"bold"}}>Available for software development opportunities and freelance projects via my <a className={styles.emailHighlight} href="mailto:brian209222@gmail.com">email</a></p>
         <p>I build software and web-based solutions from concept to deployment, combining intuitive user experiences with scalable and reliable systems.</p>
       </div>
       <div className={styles.skillsGrid}>
