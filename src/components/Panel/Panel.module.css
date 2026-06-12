@@ -1,7 +1,7 @@
 .panel {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
 
   width: 90%;
   max-width: 780px;

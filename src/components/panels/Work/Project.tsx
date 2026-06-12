@@ -10,7 +10,7 @@ export interface ProjectProps {
 function Project({title, img, description, link}: ProjectProps) {
   return (
     <div className={styles.project}>
-      <img className={styles.thumbnail} src={img}></img>
+      <img className={styles.thumbnail} src={img} alt={title}></img>
       <div className={styles.projectInfo}>
         <div className={styles.projectTitle}>
           <span>{title}</span>
