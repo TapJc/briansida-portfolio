@@ -10,11 +10,11 @@
 
   font-size: 1rem;
 
-  box-shadow: 0 4px 0 #5a657c; /* Creates a "raised" look */
+  box-shadow: 0 4px 0 var(--color-surface-alt); /* Creates a "raised" look */
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .badge:hover {
   transform: translateY(2px); /* Push down */
-  box-shadow: 0 2px 0 #5a657c; /* Smaller shadow */
+  box-shadow: 0 2px 0 var(--color-surface-alt); /* Smaller shadow */
 }
