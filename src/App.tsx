@@ -13,18 +13,27 @@ import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
 
+export type PanelPosition = {
+  "x": number,
+  "y": number,
+};
+type PanelName = "work" | "about" | "contact";
 
 function App() {
-  const [openPanel, setOpenPanel] = useState<string[]>([]);
-  // Keeps track of the zIndex of each window to manage stacking order
-  const [zIndexRecord, setZIndexRecord] = useState<Record<string, number>>({work: 0, about: 0, contact: 0});
+  const basePositionX = window.innerWidth * 0.20;
+  const basePositionY = window.innerHeight * 0.20;
+
+  const [panelPosition, setPanelPosition] = useState<Record<PanelName, PanelPosition>>({
+    work: {x: basePositionX, y: basePositionY},
+    about: {x: basePositionX, y: basePositionY},
+    contact: {x: basePositionX, y: basePositionY}
+  });
+  const [openPanel, setOpenPanel] = useState<PanelName[]>([]);
+  const [zIndexRecord, setZIndexRecord] = useState<Record<PanelName, number>>({work: 0, about: 0, contact: 0});
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const stored = localStorage.getItem("isDarkMode");
     return stored ? stored === "true" : true; // If stored exists parse it, otherwise default to true (dark mode)
   });
-  
-  const basePositionX = window.innerWidth * 0.25;
-  const basePositionY = window.innerHeight * 0.35;
 
   function toggleTheme() {
     const newMode = !isDarkMode;
@@ -41,9 +50,13 @@ function App() {
   }, []);
   
   // Adds windowName if not open, removes it if already open
-  function togglePanel(windowName: string) {
+  function togglePanel(windowName: PanelName, position: PanelPosition) {
     // Sets the zIndex of the toggled Pane to be 2 above the current max
     if (!openPanel.includes(windowName)) raiseZIndex(windowName);
+
+    setPanelPosition(prev => {
+      return {...prev, [windowName]: {x: position.x, y: position.y}};
+    });
 
     // Passes a function to setOpenPanel so React always uses the latest state
     setOpenPanel(prev => prev.includes(windowName) 
@@ -52,13 +65,13 @@ function App() {
   }
 
   // Raises the zIndex of the specified window to be above all others
-  function raiseZIndex(windowName: string) {
-    // Passes a function to setZIndexRecord so React always uses the latest state
+  function raiseZIndex(windowName: PanelName) {
+
     setZIndexRecord(prev => {
       const maxZ = Math.max(...Object.values(prev));
       // Sets the zIndex of the raised window to be 2 above the current max 
       return {...prev, [windowName]: maxZ + 2};
-    })
+    });
   }
 
   return (
@@ -67,26 +80,26 @@ function App() {
       <ThemeToggle themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
       
       <Intro title="home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
-        <NavButton onClick={() => togglePanel("about")} icon={<BsPersonExclamation/>} title="About"/>
-        <NavButton onClick={() => togglePanel("work")} icon={<BsFolder2/>} title="Work"/>
-        <NavButton onClick={() => togglePanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
+        <NavButton onClick={() => togglePanel("about", panelPosition["about"])} icon={<BsPersonExclamation/>} title="About"/>
+        <NavButton onClick={() => togglePanel("work", panelPosition["work"])} icon={<BsFolder2/>} title="Work"/>
+        <NavButton onClick={() => togglePanel("contact", panelPosition["contact"])} icon={<BsEnvelopeAt/>} title="Contact"/>
       </Intro>
 
         {/* Conditionally render each panel if its name is in openPanel */}
         {openPanel.includes("work") && 
-          <Panel title="work" initialX={(openPanel.indexOf("work") * 50) + basePositionX} initialY={(openPanel.indexOf("work") * 30) + basePositionY} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={() => togglePanel("work")}>
+          <Panel title="work" initialX={panelPosition["work"].x} initialY={panelPosition["work"].y} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={(position) => togglePanel("work", position)}>
             <Work technologies={technologies} languages={languages} projects={projects}/>
           </Panel>
         }
 
         {openPanel.includes("about") && 
-          <Panel title="about" initialX={(openPanel.indexOf("about") * 50) + basePositionX} initialY={(openPanel.indexOf("about") * 30) + basePositionY} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={() => togglePanel("about")}>
+          <Panel title="about" initialX={panelPosition["about"].x} initialY={panelPosition["about"].y} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={(position) => togglePanel("about", position)}>
             <About/>
           </Panel>
         }
 
         {openPanel.includes("contact") && 
-          <Panel title="contact" initialX={(openPanel.indexOf("contact") * 50) + basePositionX} initialY={(openPanel.indexOf("contact") * 30) + basePositionY} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={() => togglePanel("contact")}>
+          <Panel title="contact" initialX={panelPosition["contact"].x} initialY={panelPosition["contact"].y} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={(position) => togglePanel("contact", position)}>
             <Contact/>
           </Panel>
         }

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Panel.module.css";
 import CloseButton from "./CloseButton";
 import { useState, useEffect, useRef } from "react";
+import type { PanelPosition } from "../../App";
 
 interface PanelProps {
   title: string;
@@ -11,7 +12,7 @@ interface PanelProps {
   maxHeight?: string;
   zIndex: number;
   onRaise: () => void;
-  onClose: () => void;
+  onClose: (pos: PanelPosition) => void;
   children: React.ReactNode;
 }
 
@@ -92,7 +93,7 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
       <div style={ {maxWidth: maxWidth, maxHeight: maxHeight, top:`${position.y}px`, left:`${position.x}px`, zIndex: zIndex} } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <span>{title}</span>
-          <CloseButton onClick={onClose} title="x"/>
+          <CloseButton onClose={() => onClose(position)} title="x"/>
         </div>
         <div className={styles.content}>{children}</div>
       </div>
