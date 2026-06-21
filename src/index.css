@@ -1,37 +1,38 @@
 /* Default theme variables — dark mode is the default */
 :root {
-  --color-background: #101521;    /* Main page background — deep dark navy */
-  --color-surface: #22263b;       /* Panel and card backgrounds — slightly lighter than background */
-  --color-surface-alt: #3a4566;   /* Description and information backgrounds - slightly lighter than surface  */
-  --color-surface-alt-hover: #455275;
+  --color-background: #151b2c;
+  --color-surface: #232b42;
+  --color-surface-alt: #303a57;
+  --color-surface-alt-hover: #394566;
 
-  --color-text: #e8e6df;          /* Primary text — warm off-white, easy on the eyes */
-  --color-text-muted: #8a8780;    /* Secondary text — dimmer for less important info */
+  --color-text: #edf1f8;
+  --color-text-muted: #9aa4b8;
 
-  --color-accent: #e8a87c;        /* Accent color — warm amber for highlights and buttons */
-  --color-accent-hover: #d4956a;  /* Darker for dark mode hover */
-  
-  --color-border: #dddfe4;        /* Subtle borders between elements */
-  --color-scroll-hover: #c4c4c4;
+  --color-accent: #7d89c7;
+  --color-accent-hover: #929dd8;
+
+  --color-border: #dcdee3;
+  --color-scroll-hover: #c8cfdd;
+
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Mono", monospace;
 }
 
 /* Light mode overrides — applied when .light class is added to <html> element */
 :root.light {
-  --color-background: #f4f5f2;
-  --color-surface: #e4e7df;
-  --color-surface-alt: #d0d7cb;
-  --color-surface-alt-hover: #c1c8bc;
+  --color-background: #f4f6fb;
+  --color-surface: #e5eaf3;
+  --color-surface-alt: #d3dceb;
+  --color-surface-alt-hover: #c2cee2;
 
-  --color-text: #283028;
-  --color-text-muted: #667066;
+  --color-text: #20283b;
+  --color-text-muted: #6b7285;
 
-  --color-accent: #4f7a65;
-  --color-accent-hover: #629277;
+  --color-accent: #6c78b8;
+  --color-accent-hover: #7d89c7;
 
-  --color-border: #8d958a;
-  --color-scroll-hover: #8f988c;
+  --color-border: #585d6a;
+  --color-scroll-hover: #9aa3b6;
 }
 
 * {
