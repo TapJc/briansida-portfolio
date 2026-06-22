@@ -19,14 +19,14 @@ function Intro({title, name, tags, children} : IntroProps) {
       <div className={styles.introContent}>
 
         <div className={styles.nameGroup}>
-          <span className={styles.name}>Hello, <span style={{color: "var(--color-accent)", fontWeight: "bold"}}>I'm {name}</span></span>
+          <span className={styles.name}>Hello, <span className={styles.highlightText}>I'm {name}</span></span>
 
           {/* Render each tag separated by an accent-colored dot, omitting the dot after the last tag */}
           <p className={styles.tagline}> 
             {tags.map((tag, index) => (
               <span key={tag}>
                 {` ${tag} `}
-                {index !== tags.length - 1 ? <span style={{color:"var(--color-accent)", fontWeight:"bold"}}>·</span> : null}
+                {index !== tags.length - 1 ? <span className={styles.highlightText}>·</span> : null}
               </span>
             ))}
           </p>

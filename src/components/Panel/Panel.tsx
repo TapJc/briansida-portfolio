@@ -17,6 +17,9 @@ interface PanelProps {
 }
 
 function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
+  const PANEL_BORDER_OFFSET = 6; // 3px border on each side
+  const isMobile = window.innerWidth <= 850;
+  
   // Tracks the panel's current position on screen
   const [position, setPosition] = useState( {x: initialX, y: initialY} );
   // Tracks the distance between the cursor and the panel's top-left corner when dragging starts
@@ -25,8 +28,6 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
 
   // Reference to the title bar element to measure its dimensions for drag boundary calculations
   const titleBarRef = useRef<HTMLDivElement>(null);
-
-  const PANEL_BORDER_OFFSET = 6; // 3px border on each side
 
   // Initiates dragging and calculates the cursor's offset from the panel's top-left corner
   const handleMouseDown = (event : React.MouseEvent) => {
@@ -90,7 +91,14 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
     }, []);
 
     return (
-      <div style={ {maxWidth: maxWidth, maxHeight: maxHeight, top:`${position.y}px`, left:`${position.x}px`, zIndex: zIndex} } className={styles.panel} onMouseDown={onRaise}>
+      <div style=
+        { {
+          maxWidth: maxWidth, 
+          maxHeight: maxHeight, 
+          top: isMobile ? 0 : `${position.y}px`, 
+          left: isMobile ? 0 : `${position.x}px`, 
+          zIndex: zIndex
+        } } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <span>{title}</span>
           <CloseButton onClose={() => onClose(position)} title="x"/>
