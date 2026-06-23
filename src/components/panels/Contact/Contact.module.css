@@ -8,7 +8,7 @@
   padding: 20px 45px;
   gap: 10px;
 
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .contactTitle {
@@ -19,7 +19,7 @@
 
 .contactDescription {
   font-size: 1rem;
-  text-align: justify;
+  text-align: center;
 }
 
 .emailHighlight, 
@@ -35,54 +35,6 @@
 .emailHighlight:hover,
 .emailCopied:hover {
   color: var(--color-accent-hover);
-}
-
-.emailHighlight::before,
-.emailCopied::before {
-  content: "";
-  position: absolute;
-  bottom: -7.5px; /* sits just above the tooltip */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-
-  /* triangle using borders */
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent rgba(0,0,0,0.75) transparent;
-}
-
-.emailHighlight:hover::before,
-.emailCopied:hover::before {
-  opacity: 1;
-}
-
-.emailHighlight::after, 
-.emailCopied::after {
-  position: absolute;
-  bottom: -38px; /* places it below the element */
-  left: 50%;
-  transform: translateX(-50%); /* centers it horizontally */
-
-  opacity: 0; /* hidden by default */
-  transition: opacity 0.2s ease;
-  
-   /* styling */
-  background-color: rgba(0, 0, 0, 0.75); /* 0.75 = 75% opaque */
-  color: whitesmoke;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  white-space: nowrap; /* prevents text wrapping */
-}
-
-.emailHighlight::after {content: "Copy to Clipboard"}
-.emailCopied::after {content: "Copied!"}
-
-.emailHighlight:hover::after, 
-.emailCopied:hover::after {
-  opacity: 1; /* visible on hover */
 }
 
 .contactImage {
@@ -105,4 +57,77 @@
 
 .contactBtn:hover {
   background-color: var(--color-accent-hover);
+}
+
+.emailHighlight::before,
+.emailCopied::before {
+  content: "";
+  position: absolute;
+  bottom: -7.5px; /* sits just above the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.2s ease;
+
+  /* creates triangle using borders */
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0,0,0,0.75) transparent;
+}
+
+.emailHighlight:hover::before,
+.emailCopied:hover::before {
+  opacity: 1;
+}
+
+.emailHighlight::after, 
+.emailCopied::after {
+  position: absolute;
+  bottom: -38px; /* places it below the triangle */
+  left: 50%;
+  transform: translateX(-50%); /* centers it horizontally */
+
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.2s ease;
+  
+   /* creates the tooltip box */
+  background-color: rgba(0, 0, 0, 0.75); /* 0.75 = 75% opaque */
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  color: whitesmoke;
+  font-size: 0.75rem;
+  white-space: nowrap; /* prevents text wrapping */
+}
+
+.emailHighlight::after {content: "Copy to Clipboard"}
+.emailCopied::after {content: "Copied!"}
+
+.emailHighlight:hover::after, 
+.emailCopied:hover::after {
+  opacity: 1; /* visible on hover */
+}
+
+.contact::-webkit-scrollbar {
+  width: 15px;
+}
+
+.contact::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contact::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 999px;
+
+  border: 4px solid transparent;
+  background-clip: content-box;
+}
+
+.contact::-webkit-scrollbar-thumb:hover {
+  background: var(--color-scroll-hover);
+
+  border: 4px solid transparent;
+  background-clip: content-box;
 }

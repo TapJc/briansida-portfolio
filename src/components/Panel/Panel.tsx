@@ -18,19 +18,21 @@ interface PanelProps {
 
 function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
   const PANEL_BORDER_OFFSET = 6; // 3px border on each side
-  const isMobile = window.innerWidth <= 850;
-  
+
   // Tracks the panel's current position on screen
   const [position, setPosition] = useState( {x: initialX, y: initialY} );
   // Tracks the distance between the cursor and the panel's top-left corner when dragging starts
   const [offset, setOffset] = useState( {x: 0, y: 0} );
   const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 850)
 
   // Reference to the title bar element to measure its dimensions for drag boundary calculations
   const titleBarRef = useRef<HTMLDivElement>(null);
 
   // Initiates dragging and calculates the cursor's offset from the panel's top-left corner
   const handleMouseDown = (event : React.MouseEvent) => {
+    if (isMobile) return;
+
     // Prevent text selection while dragging
     event.preventDefault();
 
@@ -72,6 +74,8 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
     const controller = new AbortController();
 
     window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth <= 850);
+
       // Calculate the maximum allowed position based on the new viewport size
       const maxX = window.innerWidth - (titleBarRef.current?.offsetWidth || 0) - PANEL_BORDER_OFFSET;
       const maxY = window.innerHeight - (titleBarRef.current?.offsetHeight || 0);
@@ -90,11 +94,15 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
       }
     }, []);
 
+    useEffect(() => {
+      if (isMobile) setIsDragging(false);
+    }, [isMobile]);
+
     return (
       <div style=
         { {
-          maxWidth: maxWidth, 
-          maxHeight: maxHeight, 
+          maxWidth: isMobile ? "none" : maxWidth, 
+          maxHeight: isMobile ? "none" : maxHeight, 
           top: isMobile ? 0 : `${position.y}px`, 
           left: isMobile ? 0 : `${position.x}px`, 
           zIndex: zIndex

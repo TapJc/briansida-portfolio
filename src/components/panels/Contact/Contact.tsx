@@ -11,14 +11,14 @@ function Contact() {
 
     setTimeout(() => {
       setCopied(false)
-    }, 6000); // Resets every two seconds
+    }, 3000); // Resets every 3 seconds
   }
 
   return (
     <div className={styles.contact}>
       <span className={styles.contactTitle}>Email</span>
       <p className={styles.contactDescription}>The easiest way to contact me is through email. 
-        Direct any requests or inquiries at my email: <span className={copied ? styles.emailCopied : styles.emailHighlight} onClick={emailCopied}>brian209222@gmail.com</span>
+        Direct any inquiries at my email: <span className={copied ? styles.emailCopied : styles.emailHighlight} onClick={emailCopied}>brian209222@gmail.com</span>
       </p>
       <img className={styles.contactImage} src={mail} alt="mail"></img>
       <p className={styles.contactDescription}>or press the button below to open your mail app</p>
