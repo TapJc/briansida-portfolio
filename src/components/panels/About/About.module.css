@@ -34,10 +34,9 @@ ul {
   display: flex;
   align-items: center;
 
-  padding: 35px 60px;
+  padding: 15px 45px;
   border-bottom: 0.5px solid darkgray;
   gap: 45px;
-  height: 210px;
 }
 
 .profilePic {
@@ -84,9 +83,27 @@ ul {
 
   font-size: 1.18rem;
   gap: 25px;
-  padding: 20px 45px;
+  padding: 15px 45px;
 
   overflow-y: scroll;
+}
+
+@media(max-width: 580px) {
+  .profileHeader {
+    flex-direction: column;
+    padding: 15px 25px;
+    gap: 10px;
+  }
+  .profilePic {
+    width: 145px;
+    height: 145px;
+  }
+  .profileBio {
+    text-align: center;
+  }
+  .details {
+    padding: 15px 25px;
+  }
 }
 
 .paragraphSpacing {
@@ -106,6 +123,8 @@ ul {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: bold;
+
+  white-space: nowrap;
 }
 
 .detailBorder {
