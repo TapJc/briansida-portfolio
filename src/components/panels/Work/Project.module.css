@@ -37,6 +37,17 @@
   margin-bottom: 20px;
 }
 
+@media(max-width: 650px) {
+  .project {
+    flex-direction: column;
+    align-items: center;
+  }
+  .thumbnail {
+    margin-bottom: 30px;
+    margin-right: 0px;
+  }
+}
+
 .projectDescription p {
   margin-bottom: 12px;
 }
