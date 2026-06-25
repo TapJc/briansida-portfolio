@@ -1,6 +1,6 @@
 import styles from "./Intro.module.css";
 import React from "react";
-
+import { useState, useEffect } from "react";
 interface IntroProps {
   title: string;
   name: string;
@@ -9,12 +9,30 @@ interface IntroProps {
 }
 
 function Intro({title, name, tags, children} : IntroProps) {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 645)
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth <= 645);
+
+    }, {signal: controller.signal});
+
+    return () => {
+      controller.abort();
+    }
+
+  }, [])
+
   return (
     <div className={styles.intro}>
 
-      <div className={styles.introTitleBar}>
-        <span>{title}</span>
-      </div>
+      {!isMobile && 
+        <div className={styles.introTitleBar}>
+          <span>{title}</span>
+        </div>
+      }
 
       <div className={styles.introContent}>
 
