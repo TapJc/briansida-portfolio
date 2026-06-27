@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Panel.module.css";
 import CloseButton from "./CloseButton";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import type { PanelPosition } from "../../App";
 
 interface PanelProps {
@@ -98,7 +98,8 @@ function Panel({title, savedPosition, maxWidth, maxHeight, zIndex, onClose, onRa
       }
     }, []);
 
-    useEffect(() => {
+    // Calculates the initial centered position after measuring the title bar before the browser paints to prevent visual jumping
+    useLayoutEffect(() => {
       if(!savedPosition) {
         setPosition({
           x: (window.innerWidth * .50) - ((titleBarRef.current?.offsetWidth || 0) / 2),
@@ -122,7 +123,7 @@ function Panel({title, savedPosition, maxWidth, maxHeight, zIndex, onClose, onRa
         } } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <span>{title}</span>
-          // Closes panel only after a valid position has been calculated
+          {/* Closes panel only after a valid position has been calculated */}
           <CloseButton onClose={() => {
             if (position) onClose(position);
           }} title="x"/> 
