@@ -6,8 +6,7 @@ import type { PanelPosition } from "../../App";
 
 interface PanelProps {
   title: string;
-  initialX: number;
-  initialY: number;
+  savedPosition: PanelPosition | undefined;
   maxWidth?: string;
   maxHeight?: string;
   zIndex: number;
@@ -16,11 +15,11 @@ interface PanelProps {
   children: React.ReactNode;
 }
 
-function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
+function Panel({title, savedPosition, maxWidth, maxHeight, zIndex, onClose, onRaise, children}: PanelProps) {
   const PANEL_BORDER_OFFSET = 6; // 3px border on each side
 
   // Tracks the panel's current position on screen
-  const [position, setPosition] = useState( {x: initialX, y: initialY} );
+  const [position, setPosition] = useState<PanelPosition | undefined>(savedPosition);
   // Tracks the distance between the cursor and the panel's top-left corner when dragging starts
   const [offset, setOffset] = useState( {x: 0, y: 0} );
   const [isDragging, setIsDragging] = useState(false);
@@ -32,6 +31,7 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
   // Initiates dragging and calculates the cursor's offset from the panel's top-left corner
   const handleMouseDown = (event : React.MouseEvent) => {
     if (isMobile) return;
+    if (!position) return;
 
     // Prevent text selection while dragging
     event.preventDefault();
@@ -81,10 +81,14 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
       const maxY = window.innerHeight - (titleBarRef.current?.offsetHeight || 0);
 
       // Push panel back in bounds if it now exceeds the new viewport dimensions
-      setPosition( prev => ({
-        x: Math.min(prev.x, maxX),
-        y: Math.min(prev.y, maxY),
-      }));
+      setPosition(prev => {
+        if (!prev) return prev;
+          
+        return {
+          x: Math.min(prev.x, maxX), 
+          y: Math.min(prev.y, maxY),
+        }
+      });
 
       }, {signal: controller.signal});
 
@@ -95,6 +99,15 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
     }, []);
 
     useEffect(() => {
+      if(!savedPosition) {
+        setPosition({
+          x: (window.innerWidth * .50) - ((titleBarRef.current?.offsetWidth || 0) / 2),
+          y: (window.innerHeight * .20) - ((titleBarRef.current?.offsetHeight || 0) / 2),
+        })
+      }
+    }, [savedPosition]);
+
+    useEffect(() => {
       if (isMobile) setIsDragging(false);
     }, [isMobile]);
 
@@ -103,13 +116,16 @@ function Panel({title, initialX, initialY, maxWidth, maxHeight, zIndex, onClose,
         { {
           maxWidth: isMobile ? "none" : maxWidth, 
           maxHeight: isMobile ? "none" : maxHeight, 
-          top: isMobile ? 0 : `${position.y}px`, 
-          left: isMobile ? 0 : `${position.x}px`, 
+          top: isMobile ? 0 : position ? `${position.y}px`: undefined, 
+          left: isMobile ? 0 : position ? `${position.x}px` : undefined, 
           zIndex: zIndex
         } } className={styles.panel} onMouseDown={onRaise}>
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <span>{title}</span>
-          <CloseButton onClose={() => onClose(position)} title="x"/>
+          // Closes panel only after a valid position has been calculated
+          <CloseButton onClose={() => {
+            if (position) onClose(position);
+          }} title="x"/> 
         </div>
         <div className={styles.content}>{children}</div>
       </div>

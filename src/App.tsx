@@ -20,13 +20,11 @@ export type PanelPosition = {
 type PanelName = "work" | "about" | "contact";
 
 function App() {
-  const basePositionX = window.innerWidth * 0.20;
-  const basePositionY = window.innerHeight * 0.20;
-
-  const [panelPosition, setPanelPosition] = useState<Record<PanelName, PanelPosition>>({
-    work: {x: basePositionX, y: basePositionY},
-    about: {x: basePositionX, y: basePositionY},
-    contact: {x: basePositionX, y: basePositionY}
+  // Stores the last saved position of each panel; undefined means the panel has no saved position yet
+  const [panelPosition, setPanelPosition] = useState<Record<PanelName, PanelPosition | undefined>>({
+    work: undefined,
+    about: undefined,
+    contact: undefined
   });
   const [openPanels, setOpenPanels] = useState<PanelName[]>([]);
   const [zIndexRecord, setZIndexRecord] = useState<Record<PanelName, number>>({work: 0, about: 0, contact: 0});
@@ -60,7 +58,10 @@ function App() {
   // Removes panel and stores its last position 
   function closePanel(panel: PanelName, position: PanelPosition) {
     setPanelPosition(prev => (
-      {...prev, [panel]: {x: position.x, y: position.y}}
+      {
+        ...prev, 
+        [panel]: {x: position.x, y: position.y}
+      }
     ));
 
     setOpenPanels(prev => prev.filter(w => w !== panel));
@@ -88,19 +89,19 @@ function App() {
 
         {/* Conditionally render each panel if its name is in openPanel */}
         {openPanels.includes("work") && 
-          <Panel title="work" initialX={panelPosition["work"].x} initialY={panelPosition["work"].y} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={(position) => closePanel("work", position)}>
+          <Panel title="work" savedPosition={panelPosition["work"]} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={(position) => closePanel("work", position)}>
             <Work technologies={technologies} languages={languages} projects={projects}/>
           </Panel>
         }
 
         {openPanels.includes("about") && 
-          <Panel title="about" initialX={panelPosition["about"].x} initialY={panelPosition["about"].y} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={(position) => closePanel("about", position)}>
+          <Panel title="about" savedPosition={panelPosition["about"]} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={(position) => closePanel("about", position)}>
             <About/>
           </Panel>
         }
 
         {openPanels.includes("contact") && 
-          <Panel title="contact" initialX={panelPosition["contact"].x} initialY={panelPosition["contact"].y} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={(position) => closePanel("contact", position)}>
+          <Panel title="contact" savedPosition={panelPosition["contact"]} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={(position) => closePanel("contact", position)}>
             <Contact/>
           </Panel>
         }
