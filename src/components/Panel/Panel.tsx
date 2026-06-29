@@ -114,19 +114,19 @@ function Panel({title, savedPosition, maxWidth, maxHeight, zIndex, onClose, onRa
 
     return (
       <div style=
-        { {
+        {{
           maxWidth: isMobile ? "none" : maxWidth, 
           maxHeight: isMobile ? "none" : maxHeight, 
           top: isMobile ? 0 : position ? `${position.y}px`: undefined, 
           left: isMobile ? 0 : position ? `${position.x}px` : undefined, 
           zIndex: zIndex
-        } } className={styles.panel} onMouseDown={onRaise}>
+        }} className={styles.panel} onMouseDown={onRaise}>
+
         <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
           <span>{title}</span>
+
           {/* Closes panel only after a valid position has been calculated */}
-          <CloseButton onClose={() => {
-            if (position) onClose(position);
-          }} title="x"/> 
+          <CloseButton onClose={() => {if (position) onClose(position)}} title="x"/> 
         </div>
         <div className={styles.content}>{children}</div>
       </div>

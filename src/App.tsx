@@ -1,6 +1,9 @@
 import Panel from "./components/Panel/Panel";
+import Footer from "./components/Footer/Footer"
+
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
 import NavButton from "./components/Intro/NavButton";
+import SocialIcon from "./components/Footer/SocialIcon";
 
 import Intro from "./components/Intro/Intro";
 import About from "./components/panels/About/About";
@@ -12,6 +15,7 @@ import {projects, technologies, languages} from "./data/projects"
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
+import { FaLinkedin, FaEnvelope, FaSquareGithub } from "react-icons/fa6";
 
 export type PanelPosition = {
   "x": number,
@@ -79,7 +83,7 @@ function App() {
   return (
     <div className={styles.desktop}>
 
-      <ThemeToggle themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={() => toggleTheme()}/>
+      <ThemeToggle themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={toggleTheme}/>
       
       <Intro title="home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
         <NavButton onClick={() => openPanel("about")} icon={<BsPersonExclamation/>} title="About"/>
@@ -105,6 +109,12 @@ function App() {
             <Contact/>
           </Panel>
         }
+
+        <Footer trademark="© 2026 Brian Sida">
+          <SocialIcon link="https://www.linkedin.com/in/brian-sida/" icon={<FaLinkedin/>}/>
+          <SocialIcon link="mailto:brian209222@gmail.com" icon={<FaEnvelope/>}/>
+          <SocialIcon link="https://github.com/TapJc" icon={<FaSquareGithub/>}/>
+        </Footer>
 
     </div>
   );
