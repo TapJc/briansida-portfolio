@@ -1,4 +1,4 @@
-import styles from "./Work.module.css";
+import styles from "./Projects.module.css";
 import ToolBadge from "./ToolBadge";
 
 import Project from "./Project";
@@ -11,9 +11,9 @@ interface WorkProps {
   projects: ProjectProps[];
 }
 
-function Work({technologies, languages, projects}: WorkProps) {
+function Projects({technologies, languages, projects}: WorkProps) {
   return (
-    <div className={styles.work}>
+    <div className={styles.projects}>
       <div className={styles.headline}>
         <p className={styles.paragraphSpacing}>Available for software development opportunities and freelance projects via my <a className={styles.emailHighlight} href="mailto:brian209222@gmail.com">email</a></p>
         <p>I build software and web-based solutions from concept to deployment, combining intuitive user experiences with scalable and reliable systems.</p>
@@ -54,4 +54,4 @@ function Work({technologies, languages, projects}: WorkProps) {
   );
 }
 
-export default Work;
+export default Projects;

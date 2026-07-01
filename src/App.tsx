@@ -8,7 +8,7 @@ import SocialIcon from "./components/Footer/SocialIcon";
 import Intro from "./components/Intro/Intro";
 import About from "./components/panels/About/About";
 import Contact from "./components/panels/Contact/Contact";
-import Work from "./components/panels/Work/Work";
+import Projects from "./components/panels/Projects/Projects";
 
 import {projects, technologies, languages} from "./data/projects"
 
@@ -21,17 +21,17 @@ export type PanelPosition = {
   "x": number,
   "y": number,
 };
-type PanelName = "work" | "about" | "contact";
+type PanelName = "projects" | "about" | "contact";
 
 function App() {
   // Stores the last saved position of each panel; undefined means the panel has no saved position yet
   const [panelPosition, setPanelPosition] = useState<Record<PanelName, PanelPosition | undefined>>({
-    work: undefined,
+    projects: undefined,
     about: undefined,
     contact: undefined
   });
   const [openPanels, setOpenPanels] = useState<PanelName[]>([]);
-  const [zIndexRecord, setZIndexRecord] = useState<Record<PanelName, number>>({work: 0, about: 0, contact: 0});
+  const [zIndexRecord, setZIndexRecord] = useState<Record<PanelName, number>>({projects: 0, about: 0, contact: 0});
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const stored = localStorage.getItem("isDarkMode");
     return stored ? stored === "true" : true; // If stored exists parse it, otherwise default to true (dark mode)
@@ -87,14 +87,14 @@ function App() {
       
       <Intro title="home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
         <NavButton onClick={() => openPanel("about")} icon={<BsPersonExclamation/>} title="About"/>
-        <NavButton onClick={() => openPanel("work")} icon={<BsFolder2/>} title="Work"/>
+        <NavButton onClick={() => openPanel("projects")} icon={<BsFolder2/>} title="Projects"/>
         <NavButton onClick={() => openPanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
       </Intro>
 
         {/* Conditionally render each panel if its name is in openPanel */}
-        {openPanels.includes("work") && 
-          <Panel title="work" savedPosition={panelPosition["work"]} maxWidth="960px" zIndex={zIndexRecord["work"]} onRaise={() => raiseZIndex("work")} onClose={(position) => closePanel("work", position)}>
-            <Work technologies={technologies} languages={languages} projects={projects}/>
+        {openPanels.includes("projects") && 
+          <Panel title="projects" savedPosition={panelPosition["projects"]} maxWidth="960px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={(position) => closePanel("projects", position)}>
+            <Projects technologies={technologies} languages={languages} projects={projects}/>
           </Panel>
         }
 

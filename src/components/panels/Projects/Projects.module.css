@@ -1,4 +1,4 @@
-.work {
+.projects {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -71,15 +71,15 @@
   }
 }
 
-.work::-webkit-scrollbar {
+.projects::-webkit-scrollbar {
   width: 15px;
 }
 
-.work::-webkit-scrollbar-track {
+.projects::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.work::-webkit-scrollbar-thumb {
+.projects::-webkit-scrollbar-thumb {
   background: gray;
   border-radius: 999px;
   
@@ -87,7 +87,7 @@
   background-clip: content-box;  /* makes border act like spacing */
 }
 
-.work::-webkit-scrollbar-thumb:hover {
+.projects::-webkit-scrollbar-thumb:hover {
   background: var(--color-scroll-hover);
 
   border: 4px solid transparent; /* preserve thumb size */
