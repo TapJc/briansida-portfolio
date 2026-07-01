@@ -110,7 +110,7 @@ function App() {
           </Panel>
         }
 
-        <Footer trademark="© 2026 Brian Sida">
+        <Footer trademark={`© ${new Date().getFullYear()} Brian Sida`}>
           <SocialIcon link="https://www.linkedin.com/in/brian-sida/" icon={<FaLinkedin/>}/>
           <SocialIcon link="mailto:brian209222@gmail.com" icon={<FaEnvelope/>}/>
           <SocialIcon link="https://github.com/TapJc" icon={<FaSquareGithub/>}/>
