@@ -1,11 +1,10 @@
 .contact {
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 1;
 
   font-size: 1.18rem;
-  padding: 20px 45px;
+  padding: 35px 45px;
   gap: 10px;
 
   overflow-y: auto;
@@ -13,13 +12,8 @@
 
 .contactTitle {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
-}
-
-.contactDescription {
-  font-size: 1rem;
-  text-align: center;
 }
 
 .emailHighlight, 
@@ -29,6 +23,8 @@
 
   color: var(--color-accent); 
   text-decoration: underline;
+
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -37,11 +33,64 @@
   color: var(--color-accent-hover);
 }
 
-.contactImage {
-  max-height: 240px;
+.formLayout {
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 12px;
 }
 
-.contactBtn {
+.topSection {
+  display: flex;
+  column-gap: 10px;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+
+  row-gap: 8px;
+}
+
+.inputField {
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.messageField {
+  display: flex;
+  flex:1;
+}
+
+.messageInput {
+  width: 100%;
+  resize: none;
+
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+.inputField, 
+.messageInput {
+  border: 2px solid var(--color-surface-alt);
+  box-sizing: border-box;
+}
+
+.inputField:focus, 
+.messageInput:focus {
+  border-color: var(--color-accent);
+  outline: none; /* Removes the default browser outline */
+}
+
+.bottomSection {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.sendButton {
   background-color: var(--color-accent);
   text-decoration: none;
   border: none;
@@ -55,7 +104,7 @@
   font-weight: bold;
 }
 
-.contactBtn:hover {
+.sendButton:hover {
   background-color: var(--color-accent-hover);
 }
 
@@ -63,7 +112,7 @@
 .emailCopied::before {
   content: "";
   position: absolute;
-  bottom: -7.5px; /* sits just above the tooltip */
+  bottom: -4.1px; /* sits just above the tooltip */
   left: 50%;
   transform: translateX(-50%);
 

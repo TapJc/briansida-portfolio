@@ -105,7 +105,7 @@ function App() {
         }
 
         {openPanels.includes("contact") && 
-          <Panel title="contact" savedPosition={panelPosition["contact"]} maxWidth="560px" maxHeight="580px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={(position) => closePanel("contact", position)}>
+          <Panel title="contact" savedPosition={panelPosition["contact"]} maxWidth="740px" maxHeight="440px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={(position) => closePanel("contact", position)}>
             <Contact/>
           </Panel>
         }
