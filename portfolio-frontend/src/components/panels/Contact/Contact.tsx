@@ -27,12 +27,32 @@ function Contact() {
     }));
   }
 
+  async function handleSubmit(event : React.SyntheticEvent<HTMLFormElement, SubmitEvent>) {
+    //  Handle the form submission in React instead of letting the browser reload the page.
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(contactForm)
+      })
+
+      if (!response.ok) throw new Error("Failure to send email.")
+
+    } catch (error) {
+      console.error("Error in network: ", error);
+    }
+  }
+
   return (
     <div className={styles.contact}>
       <p className={styles.contactTitle}>WORK EMAIL <span className={copied ? styles.emailCopied : styles.emailHighlight} onClick={emailCopied}>brian209222@gmail.com</span></p>
       <p className={styles.contactTitle}>QUICK CONTACT</p>
     
-        <form className={styles.formLayout}>
+        <form className={styles.formLayout} onSubmit={handleSubmit}>
           <div className={styles.topSection}>
             <div className={styles.formFields}>
               <input className={styles.inputField} placeholder="Name" value={contactForm.name} onChange={(e) => updateContactForm("name", e.currentTarget.value)}/>
