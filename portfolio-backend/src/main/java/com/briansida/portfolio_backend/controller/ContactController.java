@@ -1,14 +1,37 @@
 package com.briansida.portfolio_backend.controller;
 
+import com.briansida.portfolio_backend.dto.ContactRequest;
+import com.briansida.portfolio_backend.service.EmailService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
-// This class handles HTTP requests and automatically converts return values to JSON
+// This class handles HTTP requests
 @RestController
 // All routes in this calls start with /api/contact
 @RequestMapping("/api/contact")
-// Allows your frontend to call this API without being blocked by the browser's security
-@CrossOrigin(origins = "*")
+
+// Change to my site because otherwise another website could technically call this email endpoint.
+@CrossOrigin(origins = "*") 
+
 public class ContactController {
+
+  private final EmailService emailService;
+
+  public ContactController(EmailService emailService) {
+    this.emailService = emailService;
+  }
   
+  // Handles POST requests from the contact form and validates the submitted data
+  @PostMapping
+  public ResponseEntity<String> createContactRequest(@Valid @RequestBody ContactRequest request) {
+    try {
+      emailService.sendEmail(request);
+
+      return ResponseEntity.ok("Email sent successfully");
+    } catch (Exception e) {
+      System.err.println("Email error: " + e.getMessage());
+      return ResponseEntity.internalServerError().body("Failure to send email");
+    }
+  }
 }

@@ -32,7 +32,7 @@ function Contact() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8000/api/contact", {
+      const response = await fetch("http://localhost:8080/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
