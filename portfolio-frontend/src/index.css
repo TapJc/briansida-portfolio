@@ -10,9 +10,11 @@
 
   --color-accent: #7d89c7;
   --color-accent-hover: #929dd8;
+  --color-accent-border: #56618f;
 
   --color-border: #dcdee3;
   --color-scroll-hover: #c8cfdd;
+  --color-shadow: rgb(0 0 0 / 35%);
 
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Mono", monospace;
@@ -30,6 +32,7 @@
 
   --color-accent: #6c78b8;
   --color-accent-hover: #7d89c7;
+  --color-accent-border: #4d588f;
 
   --color-border: #585d6a;
   --color-scroll-hover: #9aa3b6;

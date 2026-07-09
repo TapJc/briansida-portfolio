@@ -58,20 +58,21 @@
 }
 
 .projectButton {
-  background-color: var(--color-surface-alt);
+  background-color: var(--color-accent);
+  box-shadow: 0 2px 5px var(--color-shadow);
+  border: 1px solid var(--color-accent-border);
   text-decoration: none;
-  border: none;
   cursor: pointer;
   
   align-self: center;
-  padding: 12px 20px;
+  padding: 8px 20px;
   border-radius: 8px;
 
-  color: var(--color-accent);
+  color: var(--color-background);
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .projectButton:hover {
-  background-color: var(--color-surface-alt-hover);
+  background-color: var(--color-accent-hover);
 }

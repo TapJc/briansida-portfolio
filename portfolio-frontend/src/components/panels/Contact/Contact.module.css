@@ -42,7 +42,7 @@
 
 .topSection {
   display: flex;
-  column-gap: 10px;
+  gap: 10px;
 }
 
 .formFields {
@@ -54,14 +54,18 @@
 }
 
 .inputField {
-  font-size: 1rem;
   padding: 10px 15px;
   border-radius: 8px;
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+
+  width: 100%;
 }
 
 .messageField {
   display: flex;
-  flex:1;
+  flex: 1;
 }
 
 .messageInput {
@@ -70,19 +74,37 @@
 
   border-radius: 8px;
   padding: 10px 15px;
+
+  font-family: var(--font-body);
   font-size: 1rem;
+
+  /* Prevent overscroll from showing the panel background. */
+  overscroll-behavior: none;
 }
 
 .inputField, 
 .messageInput {
   border: 2px solid var(--color-surface-alt);
-  box-sizing: border-box;
+  box-sizing: border-box; /* Includes padding and border within the element's set width and height */
 }
 
 .inputField:focus, 
 .messageInput:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-border);
   outline: none; /* Removes the default browser outline */
+}
+
+@media(max-width: 850px) {
+  .topSection {
+    flex-direction: column;
+  } 
+  .formFields {
+    width: 100%;
+  }
+  .messageField {
+    height: 220px;
+    flex: none; /* Keeps fixed height on mobile by disabling flex resizing */
+  }
 }
 
 .bottomSection {
@@ -92,15 +114,15 @@
 
 .sendButton {
   background-color: var(--color-accent);
-  text-decoration: none;
-  border: none;
+  border: 1px solid var(--color-accent-border);
+  box-shadow: 0 2px 5px var(--color-shadow);
   cursor: pointer;
 
-  padding: 10px 20px;
+  padding: 8px 20px;
   border-radius: 8px;
 
   color: var(--color-background);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 

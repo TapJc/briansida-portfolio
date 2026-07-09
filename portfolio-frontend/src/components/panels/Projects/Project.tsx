@@ -22,7 +22,7 @@ function Project({title, img, description, link}: ProjectProps) {
             </p>
           )}
         </div>
-        <a className={styles.projectButton} href={link} target="_blank" rel="noopener noreferrer">view project</a>
+        <a className={styles.projectButton} href={link} target="_blank" rel="noopener noreferrer">Explore</a>
       </div>
       <div className={styles.divider}/>
     </div>

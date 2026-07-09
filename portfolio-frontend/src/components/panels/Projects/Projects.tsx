@@ -16,7 +16,7 @@ function Projects({technologies, languages, projects}: WorkProps) {
     <div className={styles.projects}>
       <div className={styles.headline}>
         <p className={styles.paragraphSpacing}>Available for software development opportunities and freelance projects via my <a className={styles.emailHighlight} href="mailto:brian209222@gmail.com">email</a></p>
-        <p>I build software and web-based solutions from concept to deployment, combining intuitive user experiences with scalable and reliable systems.</p>
+        <p>I build software and web-based solutions from concept to deployment, combining intuitive user experiences with scalable and reliable systems</p>
       </div>
       <div className={styles.skillsGrid}>
         <div>

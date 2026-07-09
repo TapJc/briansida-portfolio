@@ -14,6 +14,7 @@
 
   user-select: none;
   background-color: var(--color-surface);
+  box-shadow: 0 2px 5px var(--color-shadow);
   border: 3px solid var(--color-border);
   border-radius: 8px;
 }
@@ -73,6 +74,7 @@
 @media(max-width: 645px) {
   .intro {
     background-color: var(--color-background);
+    box-shadow: none;
     border: none;
     border-radius: 0px;
   }
@@ -87,6 +89,7 @@
   }
   .nav {
     background-color: var(--color-surface);
+    box-shadow: 0 2px 5px var(--color-shadow);
     border: 3px solid var(--color-border);
     border-radius: 8px;
 

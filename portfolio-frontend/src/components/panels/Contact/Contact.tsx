@@ -28,7 +28,7 @@ function Contact() {
   }
 
   async function handleSubmit(event : React.SyntheticEvent<HTMLFormElement, SubmitEvent>) {
-    //  Handle the form submission in React instead of letting the browser reload the page.
+    // Handle the form submission in React instead of letting the browser reload the page.
     event.preventDefault();
 
     try {
@@ -66,7 +66,7 @@ function Contact() {
           </div>
 
           <div className={styles.bottomSection}>
-            <button className={styles.sendButton} type="submit">send</button>
+            <button className={styles.sendButton} type="submit">Submit</button>
           </div>
 
         </form>
