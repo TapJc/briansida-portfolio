@@ -1,3 +1,11 @@
+/* Ensures placeholder text uses the theme's muted color without browser opacity adjustments */
+input::placeholder, 
+textarea::placeholder {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  opacity: 1;
+}
+
 .contact {
   display: flex;
   flex-direction: column;
@@ -14,6 +22,19 @@
   font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: bold;
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+
+  color: var(--color-input-error);
+  font-size: 0.85rem;
+}
+
+.errorIcon {
+  font-size: 1rem;
+  margin-right: 5px;
 }
 
 .emailHighlight, 
@@ -65,12 +86,15 @@
 
 .messageField {
   display: flex;
+  flex-direction: column;
   flex: 1;
+
+  row-gap: 8px;
 }
 
 .messageInput {
-  width: 100%;
   resize: none;
+  flex: 1;
 
   border-radius: 8px;
   padding: 10px 15px;
@@ -84,13 +108,20 @@
 
 .inputField, 
 .messageInput {
-  border: 2px solid var(--color-surface-alt);
+  background-color: var(--color-input-background);
+  border: 2px solid var(--color-input-border);
+  color: var(--color-text);
+
   box-sizing: border-box; /* Includes padding and border within the element's set width and height */
+}
+
+.inputError {
+  border-color: var(--color-input-error);
 }
 
 .inputField:focus, 
 .messageInput:focus {
-  border-color: var(--color-accent-border);
+  border-color: var(--color-input-border-focus);
   outline: none; /* Removes the default browser outline */
 }
 

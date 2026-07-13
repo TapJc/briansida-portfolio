@@ -31,6 +31,7 @@ function Panel({title, savedPosition, maxWidth, maxHeight, zIndex, onClose, onRa
   // Initiates dragging and calculates the cursor's offset from the panel's top-left corner
   const handleMouseDown = (event : React.MouseEvent) => {
     if (isMobile) return;
+    // Ignore dragging before the panel position is available
     if (!position) return;
 
     // Prevent text selection while dragging
