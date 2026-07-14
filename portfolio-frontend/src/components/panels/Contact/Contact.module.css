@@ -30,6 +30,8 @@ textarea::placeholder {
 
   color: var(--color-input-error);
   font-size: 0.85rem;
+
+  min-height: 1.2rem;
 }
 
 .errorIcon {
@@ -70,12 +72,10 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   width: 230px;
-
-  row-gap: 8px;
 }
 
 .inputField {
-  padding: 10px 15px;
+  padding: 12px 15px;
   border-radius: 8px;
 
   font-family: var(--font-body);
@@ -88,8 +88,6 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   flex: 1;
-
-  row-gap: 8px;
 }
 
 .messageInput {
@@ -97,7 +95,7 @@ textarea::placeholder {
   flex: 1;
 
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 12px 15px;
 
   font-family: var(--font-body);
   font-size: 1rem;
@@ -123,6 +121,11 @@ textarea::placeholder {
 .messageInput:focus {
   border-color: var(--color-input-border-focus);
   outline: none; /* Removes the default browser outline */
+}
+
+.inputError:focus {
+  border-color: var(--color-input-error);
+  outline: none;
 }
 
 @media(max-width: 850px) {
