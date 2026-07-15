@@ -59,8 +59,6 @@ textarea::placeholder {
 .formLayout {
   display: flex;
   flex-direction: column;
-
-  row-gap: 12px;
 }
 
 .topSection {
@@ -152,12 +150,28 @@ textarea::placeholder {
   box-shadow: 0 2px 5px var(--color-shadow);
   cursor: pointer;
 
+  min-width: 125px;
   padding: 8px 20px;
   border-radius: 8px;
 
   color: var(--color-background);
   font-size: 1rem;
   font-weight: bold;
+}
+
+/* Defines a rotation animation that spins the icon a full circle */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Styles and applies the spinning animation to the loading icon */
+.loadingIcon {
+  font-size: 0.8rem;
+  margin-right: 5px;
+
+  animation: spin 1s linear infinite;
 }
 
 .sendButton:hover {

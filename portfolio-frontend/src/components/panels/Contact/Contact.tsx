@@ -2,22 +2,20 @@ import styles from "./Contact.module.css";
 import { useState } from "react";
 
 import { IoAlertCircle } from "react-icons/io5";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type ContactField = "name" | "email" | "subject" | "message";
+const emptyContactForm = {
+  name: "",
+  email: "",
+  subject: "",
+  message: ""
+}
 
 function Contact() {
-  const [contactForm, setContactForm] = useState<Record<ContactField, string>>({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [errors, setErrors] = useState<Record<ContactField, string>>({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
+  const [contactForm, setContactForm] = useState<Record<ContactField, string>>(emptyContactForm);
+  const [errors, setErrors] = useState<Record<ContactField, string>>(emptyContactForm);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
 
   function emailCopied() {
@@ -30,7 +28,7 @@ function Contact() {
   }
 
   function updateContactForm(field: ContactField, value: string) {
-    // Removes field error once user starts typing
+    // Clear the field's validation error as the user edits it
     if (errors) {
       setErrors(prev => ({
         ...prev, [field]: ""
@@ -46,6 +44,8 @@ function Contact() {
     // Handle the form submission in React instead of letting the browser reload the page.
     event.preventDefault();
 
+    setIsSubmitting(true);
+
     try {
       const response = await fetch("http://localhost:8080/api/contact", {
         method: "POST",
@@ -57,10 +57,15 @@ function Contact() {
 
       if (!response.ok) {
         setErrors(await response.json());
+      } else {
+        setContactForm(emptyContactForm);
       }
 
     } catch (error) {
       console.error("Issue with backend: ", error);
+    } finally {
+      // Always stop the loading state after the request completes
+      setIsSubmitting(false);
     }
   }
 
@@ -111,7 +116,16 @@ function Contact() {
           </div>
 
           <div className={styles.bottomSection}>
-            <button className={styles.sendButton} type="submit">Submit</button>
+            <button className={styles.sendButton} type="submit" disabled={isSubmitting}>
+              {isSubmitting 
+                ? 
+                <>
+                  <AiOutlineLoading3Quarters className={styles.loadingIcon}/>
+                  Sending
+                </>
+                : "Submit"
+              }
+            </button>
           </div>
 
         </form>
