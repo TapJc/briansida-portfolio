@@ -10,9 +10,12 @@ export const projects = [
     title: "Brian's Portfolio",
     img: portfolio,
     description: [
-    `A single-page personal portfolio built with React and TypeScript, featuring a windowed desktop interface with draggable, 
-    stackable panels. Includes a light/dark theme toggle with localStorage persistence, dynamic z-index management, 
-    and responsive boundary clamping to keep panels within the viewport.`
+    `A single-page personal portfolio built with React and TypeScript, featuring a windowed desktop interface with 
+    draggable, stackable panels that preserve their last position. Includes a light/dark theme toggle with 
+    localStorage persistence, dynamic z-index management, responsive layouts, and viewport boundary clamping to 
+    ensure panels remain accessible across different screen sizes.`,
+    `Developed a Spring Boot backend that validates contact form requests, securely processes submissions, and uses 
+    SMTP to send emails generated through the portfolio's contact panel directly to me.`
     ],
     link: "https://github.com/TapJc/briansida-portfolio"
   },
