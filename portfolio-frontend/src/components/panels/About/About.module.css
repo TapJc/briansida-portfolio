@@ -142,7 +142,7 @@ ul {
 }
 
 .details::-webkit-scrollbar-thumb {
-  background: gray;
+  background: var(--color-scroll-thumb);
   border-radius: 999px;
   
   border: 4px solid transparent; /* creates inner spacing */
@@ -150,7 +150,7 @@ ul {
 }
 
 .details::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scroll-hover);
+  background: var(--color-scroll-thumb-hover);
 
   border: 4px solid transparent; /* preserve thumb size */
   background-clip: content-box;  /* preserve spacing */

@@ -237,16 +237,40 @@ textarea::placeholder {
 }
 
 .contact::-webkit-scrollbar-thumb {
-  background: gray;
+  background: var(--color-scroll-thumb);
   border-radius: 999px;
-
-  border: 4px solid transparent;
-  background-clip: content-box;
+  
+  border: 4px solid transparent; /* creates inner spacing */
+  background-clip: content-box;  /* makes border act like spacing */
 }
 
 .contact::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scroll-hover);
+  background: var(--color-scroll-thumb-hover);
 
-  border: 4px solid transparent;
-  background-clip: content-box;
+  border: 4px solid transparent; /* preserve thumb size */
+  background-clip: content-box;  /* preserve spacing */
+}
+
+.messageInput::-webkit-scrollbar {
+  width: 15px;
+}
+
+.messageInput::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messageInput::-webkit-scrollbar-thumb {
+  cursor: default;
+  background: var(--color-scroll-thumb);
+  border-radius: 999px;
+  
+  border: 4px solid transparent; 
+  background-clip: content-box; 
+}
+
+.messageInput::-webkit-scrollbar-thumb:hover {
+  background: var(--color-scroll-thumb-hover);
+
+  border: 4px solid transparent; 
+  background-clip: content-box;  
 }

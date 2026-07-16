@@ -19,14 +19,18 @@
   font-weight: bold;
 }
 
-.paragraphSpacing {
-  font-weight: bold;
-  padding-bottom: 2px;
+.emailHighlight:hover {
+  color: var(--color-accent-hover);
 }
 
 .titleHighlight {
   font-weight: bold;
   font-size: 1.6rem;
+}
+
+.paragraphSpacing {
+  font-weight: bold;
+  padding-bottom: 2px;
 }
 
 .footerNote {
@@ -39,12 +43,12 @@
   font-weight: bold;
 }
 
-.divider {
-  border-top: 1px solid gray;
+.footerNote a:hover {
+  color: var(--color-accent-hover);
 }
 
-.emailHighlight:hover {
-  color: var(--color-accent-hover);
+.divider {
+  border-top: 1px solid gray;
 }
 
 .headline {
@@ -80,7 +84,7 @@
 }
 
 .projects::-webkit-scrollbar-thumb {
-  background: gray;
+  background: var(--color-scroll-thumb);
   border-radius: 999px;
   
   border: 4px solid transparent; /* creates inner spacing */
@@ -88,7 +92,7 @@
 }
 
 .projects::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scroll-hover);
+  background: var(--color-scroll-thumb-hover);
 
   border: 4px solid transparent; /* preserve thumb size */
   background-clip: content-box;  /* preserve spacing */
