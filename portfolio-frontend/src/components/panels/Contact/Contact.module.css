@@ -141,7 +141,24 @@ textarea::placeholder {
 
 .bottomSection {
   display: flex;
-  flex-direction: row-reverse;
+}
+
+.success {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  color: var(--color-success);
+}
+
+.successIcon {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.successMessage {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .sendButton {
