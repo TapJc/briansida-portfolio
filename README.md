@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Portfolio Website
+---
+A desktop-inspired personal portfolio built with React, TypeScript, and Spring Boot. The application features draggable windows, responsive layouts, a persistent light/dark theme, and a full-stack contact form with client- and server-side validation. Designed to emulate a desktop environment while showcasing projects, technical skills, and professional experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+💻 **Technologies**
+---
+**Frontend**
+- React
+- TypeScript
+- HTML
+- CSS Modules
+- Fetch API
+- LocalStorage
 
-Currently, two official plugins are available:
+**Backend**
+- Java
+- Spring Boot
+- Spring Framework
+- JavaMailSender
+- Jakarta Validation
+- Maven
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+📑 **Features**
+---
+**Desktop Interface**
+- Desktop-inspired UI with draggable, stackable windows.
+- Dynamic z-index management to automatically bring active windows to the front.
+- Viewport boundary clamping to keep windows accessible while dragging.
+- Responsive behavior for desktop and mobile devices.
 
-## React Compiler
+**Theme Management**
+- Light and dark theme toggle.
+- Theme preference persisted using localStorage.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Contact Form**
+- Client-side validation for required fields and email formatting.
+- Server-side validation using Jakarta Validation.
+- Contact requests processed through a Spring Boot REST API.
+- Emails delivered using JavaMailSender.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
