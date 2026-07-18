@@ -1,8 +1,8 @@
-import portfolio from "../assets/images/projects/portfolio.png";
-import ecommerceSite from "../assets/images/projects/ecommerce.png";
-import peoriaFresh from "../assets/images/projects/peoriaFresh.png";
-import healthScape from "../assets/images/projects/healthScape.png";
-import timeToDie from "../assets/images/projects/timeToDie.png";
+import portfolio from "../assets/images/projects/portfolio.webp";
+import ecommerceSite from "../assets/images/projects/ecommerce.webp";
+import peoriaFresh from "../assets/images/projects/peoriaFresh.webp";
+import healthScape from "../assets/images/projects/healthScape.webp";
+import timeToDie from "../assets/images/projects/timeToDie.webp";
 
 // Static list of projects displayed in the Work panel
 export const projects = [
