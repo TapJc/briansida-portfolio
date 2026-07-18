@@ -11,8 +11,11 @@ import jakarta.validation.Valid;
 // All routes in this calls start with /api/contact
 @RequestMapping("/api/contact")
 
-// Change to my site because otherwise another website could technically call this email endpoint.
-@CrossOrigin(origins = "*") 
+// Configures CORS to permit requests from the React development and production clients
+@CrossOrigin(origins = {
+  "http://localhost:5173",
+  "https://briansida.vercel.app"
+}) 
 
 public class ContactController {
 
