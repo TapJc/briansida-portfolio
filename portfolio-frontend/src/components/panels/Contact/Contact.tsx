@@ -5,6 +5,7 @@ import { IoAlertCircle, IoCheckmarkCircle } from "react-icons/io5";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type ContactField = "name" | "email" | "subject" | "message";
+type StatusType = "success" | "error";
 const emptyContactForm = {
   name: "",
   email: "",
@@ -14,9 +15,12 @@ const emptyContactForm = {
 
 function Contact() {
   const [contactForm, setContactForm] = useState<Record<ContactField, string>>(emptyContactForm);
-  const [errors, setErrors] = useState<Record<ContactField, string>>(emptyContactForm);
+  const [inputErrors, setInputErrors] = useState<Record<ContactField, string>>(emptyContactForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccessfullySent, setIsSuccessfullySent] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: StatusType,
+    message: string
+  } | null>(null);
   const [copied, setCopied] = useState(false);
 
   function emailCopied() {
@@ -30,8 +34,8 @@ function Contact() {
 
   function updateContactForm(field: ContactField, value: string) {
     // Clear the field's validation error as the user edits it
-    if (errors[field]) {
-      setErrors(prev => ({
+    if (inputErrors[field]) {
+      setInputErrors(prev => ({
         ...prev, [field]: ""
       }));
     }
@@ -41,11 +45,19 @@ function Contact() {
     }));
   }
 
+  function showSubmitStatus(type: StatusType, message: string) {
+    setSubmitStatus({type, message});
+    
+    setTimeout(() => {
+      setSubmitStatus(null);
+    }, (8000));
+  }
+
   async function handleSubmit(event : React.SyntheticEvent<HTMLFormElement, SubmitEvent>) {
     // Handle the form submission in React instead of letting the browser reload the page.
     event.preventDefault();
 
-    setIsSuccessfullySent(false);
+    setSubmitStatus(null);
     setIsSubmitting(true);
 
     try {
@@ -58,19 +70,24 @@ function Contact() {
         body: JSON.stringify(contactForm)
       })
 
+      const data = await response.json();
+
       if (!response.ok) {
-        setErrors(await response.json());
+        // Show either field validation errors or a general server error.
+        if (data.type === "validation") {
+          setInputErrors(data);
+        } else if (data.type === "server") {
+          showSubmitStatus("error", data.message)
+        }
+
       } else {
         setContactForm(emptyContactForm);
-        setIsSuccessfullySent(true); // Show success feedback to the user
-
-        setTimeout(() => {
-          setIsSuccessfullySent(false);
-        }, (8000))  // Automatically dismiss the success message
+        showSubmitStatus("success", data.message); 
       }
 
     } catch (error) {
       console.error("Issue with backend: ", error);
+      showSubmitStatus("error", "Unable to connect with server");
     } finally {
       // Always stop the loading state after the request completes
       setIsSubmitting(false);
@@ -85,38 +102,38 @@ function Contact() {
         <form className={styles.formLayout} onSubmit={handleSubmit}>
           <div className={styles.topSection}>
             <div className={styles.formFields}>
-              <input className={`${styles.inputField} ${errors?.name ? styles.inputError : ""}`} placeholder="Name" value={contactForm.name} onChange={(e) => updateContactForm("name", e.currentTarget.value)}/>
+              <input className={`${styles.inputField} ${inputErrors?.name ? styles.inputError : ""}`} placeholder="Name" value={contactForm.name} onChange={(e) => updateContactForm("name", e.currentTarget.value)}/>
                 <p className={styles.errorMessage}>
-                  {errors?.name && 
+                  {inputErrors?.name && 
                     <>
-                      <IoAlertCircle className={styles.errorIcon}/> {errors.name}
+                      <IoAlertCircle className={styles.errorIcon}/> {inputErrors.name}
                     </>                  
                   }
                 </p>
-              <input className={`${styles.inputField} ${errors?.email ? styles.inputError : ""}`} placeholder="Email address" value={contactForm.email} onChange={(e) => updateContactForm("email", e.currentTarget.value)}/>
+              <input className={`${styles.inputField} ${inputErrors?.email ? styles.inputError : ""}`} placeholder="Email address" value={contactForm.email} onChange={(e) => updateContactForm("email", e.currentTarget.value)}/>
                 <p className={styles.errorMessage}>
-                  {errors?.email && 
+                  {inputErrors?.email && 
                     <>
-                      <IoAlertCircle className={styles.errorIcon}/> {errors.email}
+                      <IoAlertCircle className={styles.errorIcon}/> {inputErrors.email}
                     </>
                   }
                 </p>
-              <input className={`${styles.inputField} ${errors?.subject ? styles.inputError : ""}`} placeholder="Subject" value={contactForm.subject} onChange={(e) => updateContactForm("subject", e.currentTarget.value)}/>
+              <input className={`${styles.inputField} ${inputErrors?.subject ? styles.inputError : ""}`} placeholder="Subject" value={contactForm.subject} onChange={(e) => updateContactForm("subject", e.currentTarget.value)}/>
                 <p className={styles.errorMessage}>
-                  {errors?.subject && 
+                  {inputErrors?.subject && 
                   <>
-                    <IoAlertCircle className={styles.errorIcon}/> {errors.subject}
+                    <IoAlertCircle className={styles.errorIcon}/> {inputErrors.subject}
                   </>
                   }
                 </p>
             </div>
 
             <div className={styles.messageField}>
-              <textarea className={`${styles.messageInput} ${errors?.message ? styles.inputError : ""}`} placeholder="Your message" value={contactForm.message} onChange={(e) => updateContactForm("message", e.currentTarget.value)}/>
+              <textarea className={`${styles.messageInput} ${inputErrors?.message ? styles.inputError : ""}`} placeholder="Your message" value={contactForm.message} onChange={(e) => updateContactForm("message", e.currentTarget.value)}/>
                 <p className={styles.errorMessage}>
-                  {errors?.message && 
+                  {inputErrors?.message && 
                     <>
-                      <IoAlertCircle className={styles.errorIcon}/> {errors.message}
+                      <IoAlertCircle className={styles.errorIcon}/> {inputErrors.message}
                     </>
                   }
                 </p>
@@ -124,13 +141,20 @@ function Contact() {
           </div>
 
           <div className={styles.bottomSection}>
-            <div className={styles.success}>
+            <div className={styles.statusSection}>
+              { 
+                submitStatus?.type === "success" &&
+                  <div className={styles.success}>
+                    <IoCheckmarkCircle className={styles.statusIcon}/>
+                    <span className={styles.statusMessage}>{submitStatus.message}</span>
+                  </div>
+              } 
               {
-                isSuccessfullySent && 
-                  <>
-                    <IoCheckmarkCircle className={styles.successIcon}/>
-                    <span className={styles.successMessage}>Message sent successfully</span>
-                  </>
+                submitStatus?.type === "error" &&
+                  <div className={styles.error}>
+                    <IoAlertCircle className={styles.statusIcon}/> 
+                    <span className={styles.statusMessage}>{submitStatus.message}</span>
+                  </div>
               }
             </div>
                   

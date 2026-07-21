@@ -38,7 +38,7 @@ function About() {
             <li>role-playing and single-player games</li>
             <li>thriller movies and shows</li>
             <li>reading comics and novels</li>
-            <li>hiking or riding my bike</li>
+            <li>hiking and riding my bike</li>
           </ul>
         </div>
         <div>

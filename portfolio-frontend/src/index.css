@@ -15,7 +15,8 @@
   --color-scroll-thumb-hover: #6f7db3;
 
   --color-success: #63c17a;
-  --color-input-error: #e67c7c;
+  --color-error: #e67c7c;
+
   --color-input-background: #2b3450;
   --color-input-border: #6f7ba8;
   --color-input-border-focus: #6e7dc9;
@@ -45,7 +46,8 @@
   --color-scroll-thumb-hover: #7f8db1;
 
   --color-success: #2e9d4f;
-  --color-input-error: #c64d4d;
+  --color-error: #c64d4d;
+
   --color-input-background: #f0f3f9;
   --color-input-border: #9ba6c2;
   --color-input-border-focus: #6c78b8;
