@@ -18,6 +18,8 @@ public class GlobalExceptionHandler {
        // Stores validation errors as field name -> error message
       Map<String, String> errors = new HashMap<>();
 
+      errors.put("type", "validation");
+
        // Extracts each validation error and adds it to the response map
       ex.getBindingResult()
         .getFieldErrors()

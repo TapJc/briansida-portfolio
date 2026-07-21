@@ -1,43 +1,59 @@
 package com.briansida.portfolio_backend.service;
 
 import com.briansida.portfolio_backend.dto.ContactRequest;
+import com.briansida.portfolio_backend.dto.ResendEmailRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
 
-// Handles the logic for creating and sending contact emails
+// Handles creating contact emails and sending them through Resend's API
 @Service
 public class EmailService {
-  // Spring bean responsible for sending emails through the configured SMTP server
-  private final JavaMailSender mailSender;
-  private final String mailUsername;
+  private final RestClient restClient;
+
+  // Resend API credentials and email configuration
+  private final String apiKey;
+  private final String fromEmail;
+  private final String portfolioEmail;
 
   public EmailService(
-      JavaMailSender mailSender, 
-      // Sender email loaded from application.properties / environment variables
-      @Value("${spring.mail.username}") String mailUsername
-    ) {
-      this.mailSender = mailSender;
-      this.mailUsername = mailUsername;
+      RestClient restClient,
+      @Value("${resend.api.key}") String apiKey,
+      @Value("${resend.from}") String fromEmail,
+      @Value("${portfolio.email}") String portfolioEmail
+  ) {
+    this.restClient = restClient;
+    this.apiKey = apiKey;
+    this.fromEmail = fromEmail;
+    this.portfolioEmail = portfolioEmail;
   }
 
-  // Converts contact form data into an email and sends it
+  // Builds the email request and sends it to Resend
   public void sendEmail(ContactRequest request) {
-    SimpleMailMessage message = new SimpleMailMessage();
-    
-    message.setFrom(mailUsername);
-    message.setTo(mailUsername);
-    message.setReplyTo(request.getEmail());
-    
-    message.setSubject(request.getSubject());
-
-    message.setText(
-      "Name: " + request.getName() + 
-      "\nEmail: " + request.getEmail() +
-      "\n\nMessage: \n" + request.getMessage()
+    ResendEmailRequest email = new ResendEmailRequest(
+        fromEmail,
+        new String[]{portfolioEmail}, 
+        request.getSubject(), 
+        request.getMessage(),
+        request.getEmail()
     );
 
-    mailSender.send(message);
+    // Sends POST request to Resend's email endpoint
+    String response = restClient.post()
+            .uri("/emails")
+            // Authenticates request using Resend API key
+            .header(
+              "Authorization", 
+              "Bearer " + apiKey
+            )
+            // Converts email object into JSON request body
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(email)
+            // Executes request and retrieves response
+            .retrieve()
+            .body(String.class);
+            
+      System.out.println(response);
   }
 }

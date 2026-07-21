@@ -5,6 +5,7 @@ import com.briansida.portfolio_backend.service.EmailService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
+import java.util.Map;
 
 // This class handles HTTP requests
 @RestController
@@ -27,14 +28,24 @@ public class ContactController {
   
   // Handles POST requests from the contact form and validates the submitted data
   @PostMapping
-  public ResponseEntity<String> createContactRequest(@Valid @RequestBody ContactRequest request) {
+  public ResponseEntity<Map<String, String>> sendContactEmail(@Valid @RequestBody ContactRequest request) {
     try {
       emailService.sendEmail(request);
 
-      return ResponseEntity.ok("Email sent successfully");
+      return ResponseEntity.ok(
+        Map.of(
+          "type", "server", 
+          "message", "Email sent successfully"
+        )
+      );
     } catch (Exception e) {
       System.err.println("Email error: " + e.getMessage());
-      return ResponseEntity.internalServerError().body("Failure to send email");
+      return ResponseEntity.internalServerError().body(
+        Map.of(
+          "type", "server", 
+          "message", "Failure to send email"
+        )
+      );
     }
   }
 }
