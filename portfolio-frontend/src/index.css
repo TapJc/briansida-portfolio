@@ -15,7 +15,12 @@
   --color-scroll-thumb-hover: #6f7db3;
 
   --color-success: #63c17a;
+  --color-success-light: #1d3325;
+  --color-success-border: #4ca865;
+
   --color-error: #e67c7c;
+  --color-error-light: #3b2323;
+  --color-error-border: #d06666;
 
   --color-input-background: #2b3450;
   --color-input-border: #6f7ba8;
@@ -33,7 +38,6 @@
   --color-background: #f4f6fb;
   --color-surface: #e5eaf3;
   --color-surface-alt: #d3dceb;
-  --color-surface-alt-hover: #c2cee2;
 
   --color-text: #20283b;
   --color-text-muted: #6b7285;
@@ -46,7 +50,12 @@
   --color-scroll-thumb-hover: #7f8db1;
 
   --color-success: #2e9d4f;
+  --color-success-light: #eaf7ee;
+  --color-success-border: #4caf50;
+
   --color-error: #c64d4d;
+  --color-error-light: #fdeeee;
+  --color-error-border: #e53935;
 
   --color-input-background: #f0f3f9;
   --color-input-border: #9ba6c2;
