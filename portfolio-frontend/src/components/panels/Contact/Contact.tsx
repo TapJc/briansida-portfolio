@@ -1,5 +1,5 @@
 import styles from "./Contact.module.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { IoAlertCircle, IoCheckmarkCircle } from "react-icons/io5";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -16,12 +16,11 @@ const emptyContactForm = {
 function Contact() {
   const [contactForm, setContactForm] = useState<Record<ContactField, string>>(emptyContactForm);
   const [inputErrors, setInputErrors] = useState<Record<ContactField, string>>(emptyContactForm);
+  const [submitStatus, setSubmitStatus] = useState<{type: StatusType, message: string} | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: StatusType,
-    message: string
-  } | null>(null);
   const [copied, setCopied] = useState(false);
+
+  const statusTimeout = useRef<number | null>(null);
 
   function emailCopied() {
     navigator.clipboard.writeText("brian209222@gmail.com");
@@ -45,13 +44,24 @@ function Contact() {
     }));
   }
 
+  // Displays a temporary submission status message and resets its timer
   function showSubmitStatus(type: StatusType, message: string) {
     setSubmitStatus({type, message});
     
-    setTimeout(() => {
+    if (statusTimeout.current) clearTimeout(statusTimeout.current);
+
+    statusTimeout.current = setTimeout(() => {
       setSubmitStatus(null);
+      statusTimeout.current = null;
     }, (8000));
   }
+
+  useEffect(() => {
+    return () => {
+      // Clear the timeout if the component unmounts
+      if (statusTimeout.current) clearTimeout(statusTimeout.current);
+    }
+  }, [])
 
   async function handleSubmit(event : React.SyntheticEvent<HTMLFormElement, SubmitEvent>) {
     // Handle the form submission in React instead of letting the browser reload the page.
