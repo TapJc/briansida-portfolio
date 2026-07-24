@@ -22,9 +22,9 @@
   --color-error-light: #3b2323;
   --color-error-border: #d06666;
 
-  --color-input-background: #2b3450;
-  --color-input-border: #6f7ba8;
-  --color-input-border-focus: #6e7dc9;
+  --color-input-background: #2a3249;
+  --color-input-border: #667396;
+  --color-input-border-focus: #8ea2ff;
 
   --color-border: #dcdee3;
   --color-shadow: rgb(0 0 0 / 35%);
@@ -58,8 +58,8 @@
   --color-error-border: #e53935;
 
   --color-input-background: #f0f3f9;
-  --color-input-border: #9ba6c2;
-  --color-input-border-focus: #6c78b8;
+  --color-input-border: #b3bdd3;
+  --color-input-border-focus: #6c86e8;
 
   --color-border: #585d6a;
 }

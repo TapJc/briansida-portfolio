@@ -108,6 +108,9 @@ textarea::placeholder {
   border: 2px solid var(--color-input-border);
   color: var(--color-text);
 
+  transition: border-color 0.2s ease;
+  box-shadow: 0 2px 5px var(--color-shadow);
+
   box-sizing: border-box; /* Includes padding and border within the element's set width and height */
 }
 
@@ -145,6 +148,7 @@ textarea::placeholder {
   padding: 0px 12px;
 
   border-radius: 8px;
+  box-shadow: 0 2px 5px var(--color-shadow);
 }
 
 @media(max-width: 850px) {
