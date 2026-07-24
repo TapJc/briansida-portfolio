@@ -5,8 +5,6 @@
 ---
 A desktop-inspired personal portfolio built with React, TypeScript, and Spring Boot. The application features draggable windows, responsive layouts, a persistent light/dark theme, and a full-stack contact form with client- and server-side validation. Designed to emulate a desktop environment while showcasing projects, technical skills, and professional experience.
 
-
-
 💻 **Technologies**
 ---
 **Frontend**
@@ -21,7 +19,8 @@ A desktop-inspired personal portfolio built with React, TypeScript, and Spring B
 - Java
 - Spring Boot
 - Spring Framework
-- JavaMailSender
+- RestClient
+- Resend API
 - Jakarta Validation
 - Maven
 
@@ -41,5 +40,5 @@ A desktop-inspired personal portfolio built with React, TypeScript, and Spring B
 - Client-side validation for required fields and email formatting.
 - Server-side validation using Jakarta Validation.
 - Contact requests processed through a Spring Boot REST API.
-- Emails delivered using JavaMailSender.
+- Emails delivered through the Resend API using Spring's RestClient.
 
