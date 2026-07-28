@@ -12,6 +12,7 @@ const emptyContactForm = {
   subject: "",
   message: ""
 }
+const maxLength = 500;
 
 function Contact() {
   const [contactForm, setContactForm] = useState<Record<ContactField, string>>(emptyContactForm);
@@ -139,14 +140,16 @@ function Contact() {
             </div>
 
             <div className={styles.messageField}>
-              <textarea className={`${styles.messageInput} ${inputErrors?.message ? styles.inputError : ""}`} placeholder="Your message" value={contactForm.message} onChange={(e) => updateContactForm("message", e.currentTarget.value)}/>
-                <p className={styles.errorMessage}>
-                  {inputErrors?.message && 
-                    <>
-                      <IoAlertCircle className={styles.errorIcon}/> {inputErrors.message}
-                    </>
-                  }
-                </p>
+              <textarea className={`${styles.messageInput} ${inputErrors?.message ? styles.inputError : ""}`} placeholder="Your message" maxLength={maxLength} value={contactForm.message} onChange={(e) => updateContactForm("message", e.currentTarget.value)}/>
+              <p className={styles.counter}>{contactForm.message.length} / {maxLength}</p>  
+                  
+              <p className={styles.errorMessage}>
+                {inputErrors?.message && 
+                  <>
+                    <IoAlertCircle className={styles.errorIcon}/> {inputErrors.message}
+                  </>
+                }
+              </p>
             </div>
           </div>
 
