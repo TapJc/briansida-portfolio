@@ -14,8 +14,8 @@ export const projects = [
     draggable, stackable panels that preserve their last position. Includes a light/dark theme toggle with 
     localStorage persistence, dynamic z-index management, responsive layouts, and viewport boundary clamping to 
     ensure panels remain accessible across different screen sizes.`,
-    `Developed a Spring Boot backend that validates contact form requests, securely processes submissions, and uses 
-    SMTP to send emails generated through the portfolio's contact panel directly to me.`
+    `Developed a Spring Boot backend that validates and securely processes contact form submissions, 
+    using Spring's RestClient and the Resend API to deliver messages directly to me.`
     ],
     link: "https://github.com/TapJc/briansida-portfolio"
   },
@@ -79,10 +79,10 @@ export const projects = [
 
 // Static list of frameworks & technologies displayed in the experience section in Work panel
 export const technologies = [
-  "React", "Node.js", "Express.js", "Spring Boot", "Spring Framework", "REST APIs", "H2 Database" ,"HTML", "CSS", "Git/GitHub"
+  "React", "Material UI", "Node.js", "Express.js", "Spring Boot", "Spring Framework", "Jasmine" ,"HTML", "CSS", "Docker", "Git/GitHub"
 ];
 
 // Static list of languages displayed in the experience section in Work panel
 export const languages = [
-  "Java", "Python", "C++", "C#", "JavaScript", "TypeScript", "SQL"
+  "Java", "Python", "C++", "C#", "JavaScript", "TypeScript", "MySQL"
 ];
