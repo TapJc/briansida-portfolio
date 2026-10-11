@@ -1,4 +1,4 @@
-import styles from "./Contact.module.css";
+import styles from "./Contact.module.scss";
 import { useEffect, useRef, useState } from "react";
 
 import { IoAlertCircle, IoCheckmarkCircle } from "react-icons/io5";
@@ -107,84 +107,114 @@ function Contact() {
 
   return (
     <div className={styles.contact}>
-      <p className={styles.contactTitle}>WORK EMAIL <span className={copied ? styles.emailCopied : styles.emailHighlight} onClick={emailCopied}>brian209222@gmail.com</span></p>
-      <p className={styles.contactTitle}>QUICK CONTACT</p>
-    
-        <form className={styles.formLayout} onSubmit={handleSubmit}>
-          <div className={styles.topSection}>
-            <div className={styles.formFields}>
-              <input className={`${styles.inputField} ${inputErrors?.name ? styles.inputError : ""}`} placeholder="Name" value={contactForm.name} onChange={(e) => updateContactForm("name", e.currentTarget.value)}/>
-                <p className={styles.errorMessage}>
-                  {inputErrors?.name && 
-                    <>
-                      <IoAlertCircle className={styles.errorIcon}/> {inputErrors.name}
-                    </>                  
-                  }
-                </p>
-              <input className={`${styles.inputField} ${inputErrors?.email ? styles.inputError : ""}`} placeholder="Email address" value={contactForm.email} onChange={(e) => updateContactForm("email", e.currentTarget.value)}/>
-                <p className={styles.errorMessage}>
-                  {inputErrors?.email && 
-                    <>
-                      <IoAlertCircle className={styles.errorIcon}/> {inputErrors.email}
-                    </>
-                  }
-                </p>
-              <input className={`${styles.inputField} ${inputErrors?.subject ? styles.inputError : ""}`} placeholder="Subject" value={contactForm.subject} onChange={(e) => updateContactForm("subject", e.currentTarget.value)}/>
-                <p className={styles.errorMessage}>
-                  {inputErrors?.subject && 
-                  <>
-                    <IoAlertCircle className={styles.errorIcon}/> {inputErrors.subject}
-                  </>
-                  }
-                </p>
-            </div>
+      <p className={styles['contact__title']}>
+        WORK EMAIL{" "}
+        <span
+          className={`${styles['contact__email']} ${copied ? styles['contact__email--copied'] : ""}`}
+          onClick={emailCopied}
+        >
+          brian209222@gmail.com
+        </span>
+      </p>
+      <p className={styles['contact__title']}>QUICK CONTACT</p>
 
-            <div className={styles.messageField}>
-              <textarea className={`${styles.messageInput} ${inputErrors?.message ? styles.inputError : ""}`} placeholder="Your message" maxLength={maxLength} value={contactForm.message} onChange={(e) => updateContactForm("message", e.currentTarget.value)}/>
-              <p className={styles.counter}>{contactForm.message.length} / {maxLength}</p>  
-                  
-              <p className={styles.errorMessage}>
-                {inputErrors?.message && 
-                  <>
-                    <IoAlertCircle className={styles.errorIcon}/> {inputErrors.message}
-                  </>
-                }
-              </p>
-            </div>
+      <form className={styles['contact__form']} onSubmit={handleSubmit}>
+        <div className={styles['contact__top-section']}>
+          <div className={styles['contact__form-fields']}>
+            <input
+              className={`${styles['contact__input']} ${inputErrors?.name ? styles['contact__input--error'] : ""}`}
+              placeholder="Name"
+              value={contactForm.name}
+              onChange={(e) => updateContactForm("name", e.currentTarget.value)}
+            />
+            <p className={styles['contact__error-message']}>
+              {inputErrors?.name && (
+                <>
+                  <IoAlertCircle className={styles['contact__error-icon']} /> {inputErrors.name}
+                </>
+              )}
+            </p>
+
+            <input
+              className={`${styles['contact__input']} ${inputErrors?.email ? styles['contact__input--error'] : ""}`}
+              placeholder="Email address"
+              value={contactForm.email}
+              onChange={(e) => updateContactForm("email", e.currentTarget.value)}
+            />
+            <p className={styles['contact__error-message']}>
+              {inputErrors?.email && (
+                <>
+                  <IoAlertCircle className={styles['contact__error-icon']} /> {inputErrors.email}
+                </>
+              )}
+            </p>
+
+            <input
+              className={`${styles['contact__input']} ${inputErrors?.subject ? styles['contact__input--error'] : ""}`}
+              placeholder="Subject"
+              value={contactForm.subject}
+              onChange={(e) => updateContactForm("subject", e.currentTarget.value)}
+            />
+            <p className={styles['contact__error-message']}>
+              {inputErrors?.subject && (
+                <>
+                  <IoAlertCircle className={styles['contact__error-icon']} /> {inputErrors.subject}
+                </>
+              )}
+            </p>
           </div>
 
-          <div className={styles.bottomSection}>
-            <div className={styles.statusSection}>
-              { 
-                submitStatus?.type === "success" &&
-                  <div className={styles.success}>
-                    <IoCheckmarkCircle className={styles.statusIcon}/>
-                    <span className={styles.statusMessage}>{submitStatus.message}</span>
-                  </div>
-              } 
-              {
-                submitStatus?.type === "error" &&
-                  <div className={styles.error}>
-                    <IoAlertCircle className={styles.statusIcon}/> 
-                    <span className={styles.statusMessage}>{submitStatus.message}</span>
-                  </div>
-              }
-            </div>
-                  
-            <button className={styles.sendButton} type="submit" disabled={isSubmitting}>
-              {
-                isSubmitting ? 
-                  <>
-                    <AiOutlineLoading3Quarters className={styles.loadingIcon}/>
-                    Sending
-                  </>
-                : "Submit"
-              }
-            </button>
+          <div className={styles['contact__message-field']}>
+            <textarea
+              className={`${styles['contact__message-input']} ${inputErrors?.message ? styles['contact__message-input--error'] : ""}`}
+              placeholder="Your message"
+              maxLength={maxLength}
+              value={contactForm.message}
+              onChange={(e) => updateContactForm("message", e.currentTarget.value)}
+            />
+            <p className={styles['contact__counter']}>
+              {contactForm.message.length} / {maxLength}
+            </p>
+
+            <p className={styles['contact__error-message']}>
+              {inputErrors?.message && (
+                <>
+                  <IoAlertCircle className={styles['contact__error-icon']} /> {inputErrors.message}
+                </>
+              )}
+            </p>
+          </div>
+        </div>
+
+        <div className={styles['contact__bottom-section']}>
+          <div className={styles['contact__status-section']}>
+            {submitStatus?.type === "success" && (
+              <div className={`${styles['contact__status']} ${styles['contact__status--success']}`}>
+                <IoCheckmarkCircle className={styles['contact__status-icon']} />
+                <span className={styles['contact__status-message']}>{submitStatus.message}</span>
+              </div>
+            )}
+            {submitStatus?.type === "error" && (
+              <div className={`${styles['contact__status']} ${styles['contact__status--error']}`}>
+                <IoAlertCircle className={styles['contact__status-icon']} />
+                <span className={styles['contact__status-message']}>{submitStatus.message}</span>
+              </div>
+            )}
           </div>
 
-        </form>
-      </div>
+          <button className={styles['contact__send-button']} type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <AiOutlineLoading3Quarters className={styles['contact__loading-icon']} />
+                Sending
+              </>
+            ) : (
+              "Submit"
+            )}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

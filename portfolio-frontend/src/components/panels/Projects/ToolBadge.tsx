@@ -1,4 +1,4 @@
-import styles from "./ToolBadge.module.css";
+import styles from "./ToolBadge.module.scss";
 import React from "react";
 
 interface ToolBadgeProps {

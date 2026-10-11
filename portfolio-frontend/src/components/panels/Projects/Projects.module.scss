@@ -1,0 +1,81 @@
+@use '../../../styles/mixins' as *;
+
+$breakpoint-mobile: 750px;
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+
+  padding: 40px;
+  font-size: 1rem;
+
+  min-height: 0;
+  overflow-y: scroll;
+
+  @include scrollbar;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 25px;
+  }
+
+  &__email {
+    cursor: pointer;
+
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: bold;
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  &__label {
+    font-weight: bold;
+    padding-bottom: 2px;
+  }
+
+  &__footer-note {
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+
+  &__footer-link {
+    color: var(--color-accent);
+    font-weight: bold;
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+
+  &__divider {
+    border-top: 1px solid gray;
+  }
+
+  &__headline {
+    border-radius: 6px;
+    padding: 20px;
+
+    font-size: 0.9rem;
+
+    background-color: var(--color-surface-alt);
+  }
+
+  &__skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

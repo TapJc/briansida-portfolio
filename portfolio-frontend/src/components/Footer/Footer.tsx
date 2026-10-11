@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Footer.module.css";
+import styles from "./Footer.module.scss";
 
 interface FooterProps {
   trademark: string;
@@ -9,11 +9,11 @@ interface FooterProps {
 function Footer({trademark, children}: FooterProps) {
   return (
     <div className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.socials}>
+      <div className={styles.footer__container}>
+        <div className={styles.footer__socials}>
           {children}
         </div>
-        <p className={styles.trademark}>{trademark}</p>
+        <p className={styles.footer__trademark}>{trademark}</p>
       </div>
     </div>
   );

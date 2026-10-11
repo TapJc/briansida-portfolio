@@ -1,4 +1,4 @@
-import styles from "./Projects.module.css";
+import styles from "./Projects.module.scss";
 import ToolBadge from "./ToolBadge";
 
 import Project from "./Project";
@@ -14,13 +14,13 @@ interface WorkProps {
 function Projects({technologies, languages, projects}: WorkProps) {
   return (
     <div className={styles.projects}>
-      <div className={styles.headline}>
-        <p className={styles.paragraphSpacing}>Available for software development opportunities and freelance projects via my <a className={styles.emailHighlight} href="mailto:brian209222@gmail.com">email</a></p>
+      <div className={styles.projects__headline}>
+        <p className={styles.projects__label}>Available for software development opportunities and freelance projects via my <a className={styles.projects__email} href="mailto:brian209222@gmail.com">email</a></p>
         <p>I build software and web-based solutions from concept to deployment, combining intuitive user experiences with scalable and reliable systems</p>
       </div>
-      <div className={styles.skillsGrid}>
+      <div className={styles['projects__skills-grid']}>
         <div>
-          <h2 className={styles.titleHighlight}>TECHNOLOGIES</h2>
+          <h2 className={styles.projects__title}>TECHNOLOGIES</h2>
           {
             technologies.map(tech => (
               <ToolBadge key={tech}>{tech}</ToolBadge>
@@ -28,7 +28,7 @@ function Projects({technologies, languages, projects}: WorkProps) {
           } 
         </div>
         <div>
-          <h2 className={styles.titleHighlight}>LANGUAGES</h2>
+          <h2 className={styles.projects__title}>LANGUAGES</h2>
           {
             languages.map(language => (
               <ToolBadge key={language}>{language}</ToolBadge>
@@ -36,16 +36,16 @@ function Projects({technologies, languages, projects}: WorkProps) {
           }
         </div>
       </div>
-      <div className={styles.divider}/>
+      <div className={styles.projects__divider}/>
       <div>
-        <h2 className={styles.titleHighlight}>DEVELOPMENT</h2>
+        <h2 className={styles.projects__title}>DEVELOPMENT</h2>
           {
             projects.map((project, index) =>
               <div key={project.title}>
                 <Project {...project}/>
-                <div className={styles.divider}/>
+                <div className={styles.projects__divider}/>
 
-                {projects.length - 1 === index ? <p className={styles.footerNote}>See more on <a href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">Github</a></p> : null}
+                {projects.length - 1 === index ? <p className={styles['projects__footer-note']}>See more on <a className={styles['projects__footer-link']} href="https://github.com/TapJc" target="_blank" rel="noopener noreferrer">Github</a></p> : null}
               </div>
             )
           }

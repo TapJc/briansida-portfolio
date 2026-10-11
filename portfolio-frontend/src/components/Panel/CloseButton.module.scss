@@ -1,0 +1,29 @@
+.close-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &__bracket {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+
+    color: var(--color-text);
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    color: var(--color-text);
+  }
+}

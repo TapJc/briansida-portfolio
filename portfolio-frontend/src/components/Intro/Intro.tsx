@@ -1,4 +1,4 @@
-import styles from "./Intro.module.css";
+import styles from "./Intro.module.scss";
 import React from "react";
 import { useState, useEffect } from "react";
 interface IntroProps {
@@ -29,29 +29,29 @@ function Intro({title, name, tags, children} : IntroProps) {
     <div className={styles.intro}>
 
       {!isMobile && 
-        <div className={styles.introTitleBar}>
+        <div className={styles['intro__title-bar']}>
           <span>{title}</span>
         </div>
       }
 
-      <div className={styles.introContent}>
+      <div className={styles.intro__content}>
 
-        <div className={styles.nameGroup}>
-          <span className={styles.name}>Hello, <span className={styles.highlightText}>I'm {name}</span></span>
+        <div className={styles['intro__name-group']}>
+          <span className={styles.intro__name}>Hello, <span className={styles.intro__highlight}>I'm {name}</span></span>
 
           {/* Render each tag separated by an accent-colored dot, omitting the dot after the last tag */}
-          <p className={styles.tagline}> 
+          <p className={styles.intro__tagline}> 
             {tags.map((tag, index) => (
               <span key={tag}>
                 {` ${tag} `}
-                {index !== tags.length - 1 ? <span className={styles.highlightText}>·</span> : null}
+                {index !== tags.length - 1 ? <span className={styles.intro__highlight}>·</span> : null}
               </span>
             ))}
           </p>
 
         </div>
 
-        <nav className={styles.nav}>
+        <nav className={styles.intro__nav}>
           {children}
         </nav>
 

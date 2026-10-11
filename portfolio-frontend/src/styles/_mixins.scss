@@ -1,0 +1,25 @@
+// src/styles/_mixins.scss
+@mixin scrollbar($thumb-border: 4px) {
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-scroll-thumb);
+    border-radius: 999px;
+
+    border: $thumb-border solid transparent; // creates inner spacing
+    background-clip: content-box;            // makes border act like spacing
+
+    &:hover {
+      background: var(--color-scroll-thumb-hover);
+
+      border: $thumb-border solid transparent; // preserve thumb size
+      background-clip: content-box;            // preserve spacing
+    }
+  }
+}

@@ -1,0 +1,297 @@
+@use '../../../styles/mixins' as *;
+
+$breakpoint-mobile: 850px;
+
+// Spins the icon a full circle
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  font-size: 1.18rem;
+  padding: 35px 45px;
+  gap: 10px;
+
+  overflow-y: auto;
+
+  @include scrollbar;
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  &__error-message {
+    display: flex;
+    align-items: center;
+
+    color: var(--color-error);
+    font-size: 0.85rem;
+
+    min-height: 1.2rem;
+  }
+
+  &__error-icon {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+
+  // Email link with copy-to-clipboard tooltip
+  &__email {
+    position: relative;
+    cursor: pointer;
+
+    color: var(--color-accent);
+    text-decoration: underline;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+
+    // Tooltip arrow, created with borders
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -4.1px; // sits just above the tooltip
+      left: 50%;
+      transform: translateX(-50%);
+
+      opacity: 0; // hidden by default
+      transition: opacity 0.2s ease;
+
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent rgba(0, 0, 0, 0.75) transparent;
+    }
+
+    // Tooltip box
+    &::after {
+      content: "Copy to Clipboard";
+      position: absolute;
+      bottom: -38px; // places it below the triangle
+      left: 50%;
+      transform: translateX(-50%);
+
+      opacity: 0; // hidden by default
+      transition: opacity 0.2s ease;
+
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 8px 16px;
+      border-radius: 4px;
+
+      color: whitesmoke;
+      font-size: 0.75rem;
+      white-space: nowrap; // prevents text wrapping
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 1; // visible on hover
+    }
+
+    &--copied::after {
+      content: "Copied!";
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top-section {
+    display: flex;
+    gap: 10px;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__form-fields {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+    }
+  }
+
+  // Shared look for the text input and the message textarea
+  &__input,
+  &__message-input {
+    background-color: var(--color-input-background);
+    border: 2px solid var(--color-input-border);
+    color: var(--color-text);
+
+    transition: border-color 0.2s ease;
+    box-shadow: 0 2px 5px var(--color-shadow);
+
+    box-sizing: border-box; // includes padding and border in the set width and height
+
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 8px;
+
+    // Keeps placeholder text in the theme's muted color without browser opacity changes
+    &::placeholder {
+      color: var(--color-text-muted);
+      font-family: var(--font-body);
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: var(--color-input-border-focus);
+      outline: none; // removes the default browser outline
+    }
+  }
+
+  &__input {
+    padding: 12px 15px;
+    width: 100%;
+  }
+
+  &__message-input {
+    resize: none;
+    flex: 1;
+
+    padding: 12px 15px 22px 15px;
+
+    // Prevent overscroll from showing the panel background
+    overscroll-behavior: none;
+
+    @include scrollbar(5px);
+
+    &::-webkit-scrollbar-thumb {
+      cursor: default;
+    }
+  }
+
+  // Modifiers must come after the shared rule so they override its border color
+  &__input--error,
+  &__message-input--error {
+    border-color: var(--color-error);
+
+    &:focus {
+      border-color: var(--color-error);
+      outline: none;
+    }
+  }
+
+  &__message-field {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @media (max-width: $breakpoint-mobile) {
+      height: 220px;
+      flex: none; // keeps fixed height on mobile by disabling flex resizing
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 1.6rem;
+    right: 1rem;
+
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+
+    color: var(--color-text-muted);
+  }
+
+  &__bottom-section {
+    display: flex;
+    gap: 15px;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__status-section {
+    display: flex;
+    flex: 1;
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    width: 100%;
+    padding: 0 12px;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--color-shadow);
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 8px 12px;
+    }
+
+    &--success {
+      background-color: var(--color-success-light);
+      color: var(--color-success);
+
+      border: 1px solid var(--color-success-border);
+      border-left: 8px solid var(--color-success-border);
+    }
+
+    &--error {
+      background-color: var(--color-error-light);
+      color: var(--color-error);
+
+      border: 1px solid var(--color-error-border);
+      border-left: 8px solid var(--color-error-border);
+    }
+  }
+
+  &__status-icon {
+    font-size: 1.3rem;
+  }
+
+  &__status-message {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &__send-button {
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent-border);
+    box-shadow: 0 2px 5px var(--color-shadow);
+    cursor: pointer;
+
+    min-width: 125px;
+    padding: 8px 20px;
+    border-radius: 8px;
+
+    color: var(--color-background);
+    font-size: 1rem;
+    font-weight: bold;
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+
+  &__loading-icon {
+    font-size: 0.8rem;
+    margin-right: 5px;
+
+    animation: spin 1s linear infinite;
+  }
+}

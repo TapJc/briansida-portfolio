@@ -31,37 +31,37 @@
 
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Mono", monospace;
-}
 
-/* Light mode overrides — applied when .light class is added to <html> element */
-:root.light {
-  --color-background: #f4f6fb;
-  --color-surface: #e5eaf3;
-  --color-surface-alt: #d3dceb;
+  // Light mode overrides — applied when .light class is added to <html> element 
+  &.light {
+    --color-background: #f4f6fb;
+    --color-surface: #e5eaf3;
+    --color-surface-alt: #d3dceb;
 
-  --color-text: #20283b;
-  --color-text-muted: #6b7285;
+    --color-text: #20283b;
+    --color-text-muted: #6b7285;
 
-  --color-accent: #6c78b8;
-  --color-accent-hover: #7d89c7;
-  --color-accent-border: #4d588f;
+    --color-accent: #6c78b8;
+    --color-accent-hover: #7d89c7;
+    --color-accent-border: #4d588f;
 
-  --color-scroll-thumb: #9ba6c2;
-  --color-scroll-thumb-hover: #7f8db1;
+    --color-scroll-thumb: #9ba6c2;
+    --color-scroll-thumb-hover: #7f8db1;
 
-  --color-success: #2e9d4f;
-  --color-success-light: #eaf7ee;
-  --color-success-border: #4caf50;
+    --color-success: #2e9d4f;
+    --color-success-light: #eaf7ee;
+    --color-success-border: #4caf50;
 
-  --color-error: #c64d4d;
-  --color-error-light: #fdeeee;
-  --color-error-border: #e53935;
+    --color-error: #c64d4d;
+    --color-error-light: #fdeeee;
+    --color-error-border: #e53935;
 
-  --color-input-background: #f0f3f9;
-  --color-input-border: #b3bdd3;
-  --color-input-border-focus: #6c86e8;
+    --color-input-background: #f0f3f9;
+    --color-input-border: #b3bdd3;
+    --color-input-border-focus: #6c86e8;
 
-  --color-border: #585d6a;
+    --color-border: #585d6a;
+  }
 }
 
 * {

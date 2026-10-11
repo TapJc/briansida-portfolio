@@ -1,0 +1,79 @@
+$breakpoint-mobile: 650px;
+
+.project {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__thumbnail {
+    height: 230px;
+    width: 230px;
+
+    margin-right: 40px;
+    border-radius: 8px;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-bottom: 30px;
+      margin-right: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    text-align: left;
+    margin-bottom: 20px;
+
+    p {
+      margin-bottom: 12px;
+
+      // Removes the bottom margin on the final paragraph only
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__button {
+    background-color: var(--color-accent);
+    box-shadow: 0 2px 5px var(--color-shadow);
+    border: 1px solid var(--color-accent-border);
+    text-decoration: none;
+    cursor: pointer;
+
+    align-self: center;
+    padding: 8px 20px;
+    border-radius: 8px;
+
+    color: var(--color-background);
+    font-weight: bold;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@use '../../../styles/mixins' as *;
+
+$breakpoint-mobile: 580px;
+
+.about {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  // Allows flex item to shrink below its content height
+  // so scrolling/overflow works correctly
+  min-height: 0;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+    padding-inline-start: 1.5rem;
+  }
+
+  @mixin accent-bold {
+  color: var(--color-accent);
+  font-weight: bold;
+  }
+
+  &__highlight {
+    @include accent-bold;
+  }
+
+  &__link {
+    @include accent-bold;
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+
+  &__profile-header {
+    display: flex;
+    align-items: center;
+
+    padding: 15px 45px;
+    border-bottom: 0.5px solid darkgray;
+    gap: 45px;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      padding: 15px 25px;
+      gap: 10px;
+    }
+  }
+
+  &__profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    height: 160px;
+    width: 160px;
+    object-fit: cover; // ensures image fills circle without distortion
+    border-radius: 50%;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 145px;
+      height: 145px;
+    }
+  }
+
+  &__profile-bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+
+    @media (max-width: $breakpoint-mobile) {
+      text-align: center;
+    }
+  }
+
+  &__name {
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+  &__description {
+    color: var(--color-text);
+    font-size: 1.1rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    font-size: 1.18rem;
+    gap: 25px;
+    padding: 15px 45px;
+
+    overflow-y: scroll;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: 15px 25px;
+    }
+
+    @include scrollbar;
+  }
+
+  &__paragraph {
+    margin-bottom: 10px;
+  }
+
+  &__muted {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  &__detail-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    white-space: nowrap;
+  }
+
+  &__detail-border {
+    border-left: 3px solid var(--color-border);
+    margin-top: 8px;
+    padding-left: 15px;
+  }
+}

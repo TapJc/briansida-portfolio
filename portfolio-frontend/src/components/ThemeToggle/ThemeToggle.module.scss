@@ -1,15 +1,19 @@
-.socialIcon {
+.theme-button {
+  position: fixed;
+  left: 25px;
+  top: 15px;
+
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
 
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--color-text);
 
   transition: transform 0.2s ease;
-}
 
-.socialIcon:hover {
-  transform: scale(1.1);
+  &:hover {
+    transform: scale(1.1);
+  }
 }

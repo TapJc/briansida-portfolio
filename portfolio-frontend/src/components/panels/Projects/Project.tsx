@@ -1,4 +1,4 @@
-import styles from "./Project.module.css"
+import styles from "./Project.module.scss"
 
 export interface ProjectProps {
   title: string;
@@ -10,21 +10,20 @@ export interface ProjectProps {
 function Project({title, img, description, link}: ProjectProps) {
   return (
     <div className={styles.project}>
-      <img className={styles.thumbnail} src={img} alt={title}></img>
-      <div className={styles.projectInfo}>
-        <div className={styles.projectTitle}>
+      <img className={styles.project__thumbnail} src={img} alt={title}></img>
+      <div className={styles.project__info}>
+        <div className={styles.project__title}>
           <span>{title}</span>
         </div>
-        <div className={styles.projectDescription}>
+        <div className={styles.project__description}>
           {description.map((sentence, index) => 
             <p key={index}>
               {sentence}
             </p>
           )}
         </div>
-        <a className={styles.projectButton} href={link} target="_blank" rel="noopener noreferrer">Explore</a>
+        <a className={styles.project__button} href={link} target="_blank" rel="noopener noreferrer">Explore</a>
       </div>
-      <div className={styles.divider}/>
     </div>
   );
 }

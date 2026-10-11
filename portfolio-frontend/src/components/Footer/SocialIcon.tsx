@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SocialIcon.module.css";
+import styles from "./SocialIcon.module.scss";
 
 interface SocialIconProps {
   link: string;
@@ -8,7 +8,7 @@ interface SocialIconProps {
 
 function SocialIcon({link, icon}: SocialIconProps) {
   return (
-    <a className={styles.socialIcon} href={link} target={link.startsWith("mailto:") ? undefined : "_blank"} rel="noopener noreferrer">
+    <a className={styles['social-icon']} href={link} target={link.startsWith("mailto:") ? undefined : "_blank"} rel="noopener noreferrer">
       {icon}
     </a>
   );

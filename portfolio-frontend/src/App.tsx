@@ -12,7 +12,7 @@ import Projects from "./components/panels/Projects/Projects";
 
 import {projects, technologies, languages} from "./data/projects"
 
-import styles from "./App.module.css";
+import styles from "./App.module.scss";
 import { useState, useEffect } from "react";
 import { BsPersonExclamation, BsEnvelopeAt, BsFolder2, BsSun, BsMoonStars} from "react-icons/bs";
 import { FaLinkedin, FaEnvelope, FaSquareGithub } from "react-icons/fa6";

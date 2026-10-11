@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Panel.module.css";
+import styles from "./Panel.module.scss";
 import CloseButton from "./CloseButton";
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import type { PanelPosition } from "../../App";
@@ -123,13 +123,13 @@ function Panel({title, savedPosition, maxWidth, maxHeight, zIndex, onClose, onRa
           zIndex: zIndex
         }} className={styles.panel} onMouseDown={onRaise}>
 
-        <div ref={titleBarRef} className={styles.titleBar} onMouseDown={handleMouseDown}>
+        <div ref={titleBarRef} className={styles['panel__title-bar']} onMouseDown={handleMouseDown}>
           <span>{title}</span>
 
           {/* Closes panel only after a valid position has been calculated */}
           <CloseButton onClose={() => {if (position) onClose(position)}} title="x"/> 
         </div>
-        <div className={styles.content}>{children}</div>
+        <div className={styles.panel__content}>{children}</div>
       </div>
     );
   }

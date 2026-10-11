@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./NavButton.module.css"
+import styles from "./NavButton.module.scss"
 
 // Props for a navigation button with an icon and text label
 interface NavButtonProps {
@@ -10,9 +10,9 @@ interface NavButtonProps {
 
 function NavButton({icon, title, onClick} : NavButtonProps) {
   return (
-    <button className={styles.navButton} onClick={onClick}>
-      <div className={styles.navIcon}>{icon}</div>
-      <span className={styles.title}>{title}</span>
+    <button className={styles['nav-button']} onClick={onClick}>
+      <div className={styles['nav-button__icon']}>{icon}</div>
+      <span className={styles['nav-button__title']}>{title}</span>
     </button>
   );
 }

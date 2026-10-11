@@ -1,4 +1,4 @@
-import styles from "./CloseButton.module.css"
+import styles from "./CloseButton.module.scss"
 interface ClosebuttonProps {
   title: string;
   onClose: () => void;
@@ -6,10 +6,10 @@ interface ClosebuttonProps {
 
 function CloseButton({onClose, title} : ClosebuttonProps) {
   return (
-    <button className={styles.closeButton} onClick={onClose}>
-      <span className={styles.bracket}>[</span>
-      <span className={styles.title}>{title}</span>
-      <span className={styles.bracket}>]</span>
+    <button className={styles['close-button']} onClick={onClose}>
+      <span className={styles['close-button__bracket']}>[</span>
+      <span className={styles['close-button__title']}>{title}</span>
+      <span className={styles['close-button__bracket']}>]</span>
     </button>
   );
 }
