@@ -40,7 +40,7 @@ public class EmailService {
     );
 
     // Sends POST request to Resend's email endpoint
-    String response = restClient.post()
+    restClient.post()
             .uri("/emails")
             // Authenticates request using Resend API key
             .header(
@@ -52,8 +52,6 @@ public class EmailService {
             .body(email)
             // Executes request and retrieves response
             .retrieve()
-            .body(String.class);
-            
-      System.out.println(response);
+            .toBodilessEntity();
   }
 }
