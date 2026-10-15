@@ -8,10 +8,10 @@ interface NavButtonProps {
   onClick: () => void;   // callback fired when button is clicked
 }
 
-function NavButton({icon, title, onClick} : NavButtonProps) {
+function NavButton({ icon, title, onClick }: NavButtonProps) {
   return (
-    <button className={styles['nav-button']} onClick={onClick}>
-      <div className={styles['nav-button__icon']}>{icon}</div>
+    <button type="button" className={styles['nav-button']} onClick={onClick}>
+      <span className={styles['nav-button__icon']} aria-hidden="true">{icon}</span>
       <span className={styles['nav-button__title']}>{title}</span>
     </button>
   );

@@ -70,6 +70,8 @@ $breakpoint-mobile: 645px;
   }
 
   &__name {
+    font-family: var(--font-body);
+    font-weight: normal;
     font-size: 4.5rem;
 
     @media (max-width: $breakpoint-mobile) {

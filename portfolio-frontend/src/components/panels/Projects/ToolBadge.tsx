@@ -5,12 +5,8 @@ interface ToolBadgeProps {
   children: React.ReactNode;
 }
 
-function ToolBadge({children}: ToolBadgeProps) {
-  return (
-    <span className={styles.badge}>
-      {children}
-    </span>
-  );
+function ToolBadge({ children }: ToolBadgeProps) {
+  return <li className={styles['tool-badge']}>{children}</li>;
 }
 
 export default ToolBadge;

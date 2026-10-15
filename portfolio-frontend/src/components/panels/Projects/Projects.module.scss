@@ -30,6 +30,10 @@ $breakpoint-mobile: 750px;
     &:hover {
       color: var(--color-accent-hover);
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-input-border-focus);
+    }
   }
 
   &__title {
@@ -53,6 +57,10 @@ $breakpoint-mobile: 750px;
 
     &:hover {
       color: var(--color-accent-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-input-border-focus);
     }
   }
 

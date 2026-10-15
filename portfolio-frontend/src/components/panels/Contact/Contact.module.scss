@@ -43,8 +43,14 @@ $breakpoint-mobile: 850px;
     margin-right: 5px;
   }
 
-  // Email link with copy-to-clipboard tooltip
+  // Email button with copy-to-clipboard tooltip
   &__email {
+    // Reset default button styles
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+
     position: relative;
     cursor: pointer;
 
@@ -56,6 +62,11 @@ $breakpoint-mobile: 850px;
 
     &:hover {
       color: var(--color-accent-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-input-border-focus);
+      outline-offset: 2px;
     }
 
     // Tooltip arrow, created with borders
@@ -94,14 +105,28 @@ $breakpoint-mobile: 850px;
       white-space: nowrap; // prevents text wrapping
     }
 
+    // Show the tooltip on hover and for keyboard users
     &:hover::before,
-    &:hover::after {
-      opacity: 1; // visible on hover
+    &:hover::after,
+    &:focus-visible::before,
+    &:focus-visible::after {
+      opacity: 1;
     }
 
+    // Must stay after the base ::after so it overrides the content
     &--copied::after {
       content: "Copied!";
     }
+  }
+
+  // Visually hidden text that screen readers still announce
+  &__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   &__form {
@@ -129,7 +154,7 @@ $breakpoint-mobile: 850px;
     }
   }
 
-  // Shared look for the text input and the message textarea
+  // Shared look for the text inputs and the message textarea
   &__input,
   &__message-input {
     background-color: var(--color-input-background);
@@ -285,6 +310,11 @@ $breakpoint-mobile: 850px;
 
     &:hover {
       background-color: var(--color-accent-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-input-border-focus);
+      outline-offset: 2px;
     }
   }
 

@@ -82,40 +82,71 @@ function App() {
 
   return (
     <div className={styles.desktop}>
+      <header>
+        <ThemeToggle
+          themeIcon={isDarkMode ? <BsSun /> : <BsMoonStars />}
+          label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          onClick={toggleTheme}
+        />
+      </header>
 
-      <ThemeToggle themeIcon={isDarkMode ? <BsSun/> : <BsMoonStars/>} onClick={toggleTheme}/>
-      
-      <Intro title="home" name="Brian" tags={["fullstack developer", "cs graduate", "problem solver"]}>
-        <NavButton onClick={() => openPanel("about")} icon={<BsPersonExclamation/>} title="About"/>
-        <NavButton onClick={() => openPanel("projects")} icon={<BsFolder2/>} title="Projects"/>
-        <NavButton onClick={() => openPanel("contact")} icon={<BsEnvelopeAt/>} title="Contact"/>
-      </Intro>
+      <main>
+        <Intro
+          title="home"
+          name="Brian"
+          tags={["fullstack developer", "cs graduate", "problem solver"]}
+        >
+          <NavButton onClick={() => openPanel("about")} icon={<BsPersonExclamation />} title="About" />
+          <NavButton onClick={() => openPanel("projects")} icon={<BsFolder2 />} title="Projects" />
+          <NavButton onClick={() => openPanel("contact")} icon={<BsEnvelopeAt />} title="Contact" />
+        </Intro>
 
-        {/* Conditionally render each panel if its name is in openPanel */}
-        {openPanels.includes("projects") && 
-          <Panel title="projects" savedPosition={panelPosition["projects"]} maxWidth="960px" zIndex={zIndexRecord["projects"]} onRaise={() => raiseZIndex("projects")} onClose={(position) => closePanel("projects", position)}>
-            <Projects technologies={technologies} languages={languages} projects={projects}/>
+        {/* Conditionally render each panel if its name is in openPanels */}
+        {openPanels.includes("projects") && (
+          <Panel
+            title="projects"
+            savedPosition={panelPosition["projects"]}
+            maxWidth="960px"
+            zIndex={zIndexRecord["projects"]}
+            onRaise={() => raiseZIndex("projects")}
+            onClose={(position) => closePanel("projects", position)}
+          >
+            <Projects technologies={technologies} languages={languages} projects={projects} />
           </Panel>
-        }
+        )}
 
-        {openPanels.includes("about") && 
-          <Panel title="about" savedPosition={panelPosition["about"]} zIndex={zIndexRecord["about"]} onRaise={() => raiseZIndex("about")} onClose={(position) => closePanel("about", position)}>
-            <About/>
+        {openPanels.includes("about") && (
+          <Panel
+            title="about"
+            savedPosition={panelPosition["about"]}
+            zIndex={zIndexRecord["about"]}
+            onRaise={() => raiseZIndex("about")}
+            onClose={(position) => closePanel("about", position)}
+          >
+            <About />
           </Panel>
-        }
+        )}
 
-        {openPanels.includes("contact") && 
-          <Panel title="contact" savedPosition={panelPosition["contact"]} maxWidth="740px" maxHeight="480px" zIndex={zIndexRecord["contact"]} onRaise={() => {raiseZIndex("contact")}} onClose={(position) => closePanel("contact", position)}>
-            <Contact/>
+        {openPanels.includes("contact") && (
+          <Panel
+            title="contact"
+            savedPosition={panelPosition["contact"]}
+            maxWidth="740px"
+            maxHeight="480px"
+            zIndex={zIndexRecord["contact"]}
+            onRaise={() => raiseZIndex("contact")}
+            onClose={(position) => closePanel("contact", position)}
+          >
+            <Contact />
           </Panel>
-        }
+        )}
+      </main>
 
-        <Footer trademark={`© ${new Date().getFullYear()} Brian Sida`}>
-          <SocialIcon link="https://www.linkedin.com/in/brian-sida/" icon={<FaLinkedin/>}/>
-          <SocialIcon link="mailto:brian209222@gmail.com" icon={<FaEnvelope/>}/>
-          <SocialIcon link="https://github.com/TapJc" icon={<FaSquareGithub/>}/>
-        </Footer>
-
+      <Footer trademark={`© ${new Date().getFullYear()} Brian Sida`}>
+        <SocialIcon link="https://www.linkedin.com/in/brian-sida/" icon={<FaLinkedin />} label="LinkedIn" />
+        <SocialIcon link="mailto:brian209222@gmail.com" icon={<FaEnvelope />} label="Mail" />
+        <SocialIcon link="https://github.com/TapJc" icon={<FaSquareGithub />} label="GitHub" />
+      </Footer>
     </div>
   );
 }

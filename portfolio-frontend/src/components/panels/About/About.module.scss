@@ -87,6 +87,7 @@ $breakpoint-mobile: 580px;
 
   &__name {
     color: var(--color-accent);
+    font-family: var(--font-body);
     font-weight: bold;
     font-size: 3rem;
   }

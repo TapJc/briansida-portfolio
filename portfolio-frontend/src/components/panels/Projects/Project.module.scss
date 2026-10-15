@@ -36,6 +36,7 @@ $breakpoint-mobile: 650px;
   }
 
   &__title {
+    font-family: var(--font-body);
     font-size: 1.3rem;
     font-weight: bold;
 
@@ -74,6 +75,11 @@ $breakpoint-mobile: 650px;
 
     &:hover {
       background-color: var(--color-accent-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-input-border-focus);
+      outline-offset: 2px;
     }
   }
 }
